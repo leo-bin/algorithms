@@ -29,9 +29,12 @@ public class MaxInWindows {
      * 6.时间复杂度：O(n*k)(k为滑动窗口的数量)
      * 7.空间复杂度：O(n)
      */
-    public static ArrayList<Integer> maxInWindows(int[] num, int size) {
+    public static ArrayList<Integer> maxInWindows(int[] nums, int size) {
         ArrayList<Integer> list = new ArrayList<>();
-        if (num.length == 0 || size > num.length || size <= 0) {
+        if (nums.length == 0) {
+            return list;
+        }
+        if (size > nums.length || size <= 0) {
             return list;
         }
         //1.构造一个大顶堆
@@ -39,16 +42,16 @@ public class MaxInWindows {
         int count = 0;
         //2.第一组滑动窗口入队列
         for (; count < size; count++) {
-            maxQueue.offer(num[count]);
+            maxQueue.offer(nums[count]);
         }
         //3.调整队列
-        while (count < num.length) {
+        while (count < nums.length) {
             //先将堆顶（最大值）元素存list
             list.add(maxQueue.peek());
             //删掉过期的元素（就是已经不在当前的窗口中的元素）
-            maxQueue.remove(num[count - size]);
+            maxQueue.remove(nums[count - size]);
             //往队列中增加下一个元素
-            maxQueue.add(num[count]);
+            maxQueue.add(nums[count]);
             count++;
         }
         //4.最后一个滑动窗口还没来得及出队列

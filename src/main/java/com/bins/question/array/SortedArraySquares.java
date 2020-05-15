@@ -57,6 +57,7 @@ public class SortedArraySquares {
         return result;
     }
 
+
     public static void main(String[] args) {
         int[] nums1 = {-4, -1, 0, 3, 10};
         int[] result1 = sortedSquares(nums1);
