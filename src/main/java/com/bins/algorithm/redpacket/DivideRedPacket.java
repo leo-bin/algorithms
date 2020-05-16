@@ -76,7 +76,7 @@ public class DivideRedPacket {
      * 2.可以这么写：int random = start + ( Math.Random() * (end - start ))
      */
     private static double getRandomMoney(double restMoney, int restPeople, int scale) {
-        double random = 0.01 + Math.random() * (restMoney * 1.0 / restPeople * 2 - 0.01);
+        double random = 0.01 + Math.random() * (restMoney / restPeople * 2 - 0.01);
         return getDoubleByScale(scale, random);
     }
 

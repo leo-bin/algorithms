@@ -53,11 +53,11 @@ public class MedianNumber {
         if (num != null) {
             if ((count & 1) == 0) {
                 maxQueue.add(num);
-                int max = maxQueue.poll();
+                Integer max = maxQueue.poll();
                 minQueue.add(max);
             } else {
                 minQueue.add(num);
-                int min = minQueue.poll();
+                Integer min = minQueue.poll();
                 maxQueue.add(min);
             }
             count++;

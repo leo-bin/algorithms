@@ -1,4 +1,4 @@
-package com.bins.question.others;
+package com.bins.question.array;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;

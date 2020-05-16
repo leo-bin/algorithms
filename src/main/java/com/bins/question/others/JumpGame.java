@@ -3,7 +3,7 @@ package com.bins.question.others;
 /**
  * @author leo-bin
  * @date 2020/5/4 12:16
- * @apiNote
+ * @apiNote 跳跃游戏
  */
 public class JumpGame {
 

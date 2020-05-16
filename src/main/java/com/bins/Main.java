@@ -1,15 +1,20 @@
 package com.bins;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
 
-
     public static void main(String[] args) {
         //大概是10亿
         /*System.out.println(256 << 22);*/
+        for (int i = 0; i < 10; i++) {
+            double random = 0.01 + Math.random() * 49.99;
+            System.out.println("随机从[0.01,49.99]选取一个随机数=" + random);
+        }
     }
 
 
