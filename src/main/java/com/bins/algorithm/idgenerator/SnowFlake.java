@@ -125,9 +125,11 @@ public class SnowFlake {
         // 上次生成ID的时间截
         lastTimestamp = timestamp;
         // 移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - INITIAL_TIME_STAMP) << TIMESTAMP_OFFSET) | (dataCenterId << DATACENTERID_OFFSET)
+        return ((timestamp - INITIAL_TIME_STAMP) << TIMESTAMP_OFFSET)
+                | (dataCenterId << DATACENTERID_OFFSET)
                 | (workerId << WORKERID_OFFSET) | sequence;
     }
+
 
     /**
      * 阻塞到下一个毫秒，直到获得新的时间戳
@@ -175,6 +177,7 @@ public class SnowFlake {
         }
         executorService.shutdown();
     }
+
 }
 
 
