@@ -48,12 +48,13 @@ public class WeightRandom {
         return serverList.get(serverNumber);
     }
 
+
     private static void initV2() {
         //设置服务器的权重
         v2Map.put("192.168.1.1", 2);
         v2Map.put("192.168.1.2", 5);
         v2Map.put("192.168.1.3", 9);
-        allWeight = 2 + 5 + 9;
+        allWeight = v2Map.values().stream().mapToInt(a -> a).sum();
     }
 
 
@@ -61,7 +62,12 @@ public class WeightRandom {
      * 解法二，使用区间判断的方法
      *
      * @apiNote 思路：
-     * 1.
+     * 1.因为权值的意思本质上就是占比
+     * 2.所以我们其实可以将各个权值看成不同的区间
+     * 3.比如说权值为2它代表的区间就是1-2，占2份
+     * 4.权值为5代表的就是3-7，占5份
+     * 5.权值为9代表的就是8-16，占9份
+     * 6.接下来我只要获取一个从1到16的随机数，判断它是哪个区间的就能够确定服务器的地址了
      */
     private static String weightRandomV2() {
         int serverNumber = random.nextInt(allWeight);
