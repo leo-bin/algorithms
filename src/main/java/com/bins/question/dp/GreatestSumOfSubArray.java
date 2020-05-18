@@ -30,9 +30,6 @@ public class GreatestSumOfSubArray {
         if (array.length == 0) {
             return 0;
         }
-        if (array.length == 1) {
-            return array[0];
-        }
         //1.定义dp数组
         int[] dp = new int[array.length + 1];
         //2.初始化dp

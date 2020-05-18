@@ -36,9 +36,6 @@ public class MaxSubArray {
         if (len == 0) {
             return 0;
         }
-        if (len == 1) {
-            return nums[0];
-        }
         //最大子序列的和
         int max = 0;
         //1.dp数组
