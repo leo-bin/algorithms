@@ -6,6 +6,8 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/4/15 18:45
  * @apiNote 重建二叉树
+ * 来源：leetcode-105
+ * 链接：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
 public class TreeRebuild {
 
