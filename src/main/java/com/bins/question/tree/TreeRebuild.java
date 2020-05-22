@@ -31,7 +31,11 @@ public class TreeRebuild {
      *
      * @apiNote 思路：
      * 1.使用递归解决
-     * 2.
+     * 2.根据当前的前序遍历的第一个元素就是根节点
+     * 3.以及根据此时的根节点去中序遍历中就能找到此根节点的左子树和右子树
+     * 4.这样一来我们只要每次都将局部的pre和in返回，每次都找当前的根节点
+     * 5.时间复杂度：O(n)
+     * 6.空间复杂度：O(n)
      */
     public static TreeNode reBuildTree(int[] preOrder, int[] inOrder) {
         //鲁棒
