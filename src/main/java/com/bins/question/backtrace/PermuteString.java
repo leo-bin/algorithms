@@ -71,7 +71,7 @@ public class PermuteString {
     public static void main(String[] args) {
         String str = "aa";
         List<String> result = permuteString(str);
-        if (result != null && result.size() >= 1) {
+        if (result.size() >= 1) {
             System.out.println(result.toString());
         } else {
             System.out.println("字符串为空！");
