@@ -88,14 +88,6 @@ public class MinStack {
     }
 
 
-    public int top() {
-        if (!mainStack.isEmpty()) {
-            return mainStack.peek();
-        }
-        throw new RuntimeException("栈中元素为空，此操作非法！");
-    }
-
-
     public int getMin() {
         return minElement;
     }
