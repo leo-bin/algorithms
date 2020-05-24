@@ -1,6 +1,7 @@
 package com.bins.algorithm.lru;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author leo-bin
@@ -14,20 +15,20 @@ public class LRUCacheV2 {
      * 缓存容量
      */
     private final int cacheSize;
-    private HashMap<String, Node> map;
+    private ConcurrentHashMap<String, Node> map;
     private Node head;
     private Node tail;
 
     public LRUCacheV2(int cacheSize) {
         this.cacheSize = cacheSize;
-        this.map = new HashMap<>(16);
+        this.map = new ConcurrentHashMap<>(16);
     }
 
     /**
      * 内部节点类
      */
     public class Node {
-        private String key;
+        private volatile String key;
         private volatile String value;
         private Node pre;
         private Node next;
@@ -94,6 +95,7 @@ public class LRUCacheV2 {
             addNode(node);
         }
     }
+
 
     /**
      * 往链表尾部增加一个节点
