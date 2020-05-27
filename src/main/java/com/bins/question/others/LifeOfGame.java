@@ -7,6 +7,8 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/4/8 21:35
  * @apiNote 生命游戏
+ * 来源：leetcode-289
+ * 链接：https://leetcode-cn.com/problems/game-of-life/
  */
 public class LifeOfGame {
 
@@ -51,36 +53,26 @@ public class LifeOfGame {
             int lenY = board[0].length;
             //1.构造一个新的矩阵用来存放原来的数组，把原来的数组包住
             int[][] old = new int[lenX + 2][lenY + 2];
-            int oldX = old.length;
-            int oldY = old[0].length;
             //2.初始化这个数组
-            for (int j = 0; j < lenY; j++) {
-                old[0][j] = 0;
-                old[oldX - 1][j] = 0;
-            }
-            for (int i = 0; i < lenX; i++) {
-                old[i][0] = 0;
-                old[i][oldY - 1] = 0;
-            }
-            for (int i = 1; i < oldX - 1; i++) {
-                for (int j = 1; j < oldY - 1; j++) {
+            for (int i = 1; i < old.length - 1; i++) {
+                for (int j = 1; j < old[0].length - 1; j++) {
                     old[i][j] = board[i - 1][j - 1];
                 }
             }
-            for (int i = 1; i < oldX - 1; i++) {
-                for (int j = 1; j < oldY - 1; j++) {
+            for (int i = 1; i < old.length - 1; i++) {
+                for (int j = 1; j < old[0].length - 1; j++) {
                     int n = old[i - 1][j - 1] + old[i - 1][j] +
                             old[i - 1][j + 1] + old[i][j - 1] +
                             old[i][j + 1] + old[i + 1][j - 1] +
                             old[i + 1][j] + old[i + 1][j + 1];
-                    //活细胞
+                    //1.活细胞
                     if (board[i - 1][j - 1] == 1) {
                         //活细胞死亡
                         if (n < 2 || n > 3) {
                             board[i - 1][j - 1] = 0;
                         }
                     }
-                    //死细胞
+                    //2.死细胞
                     if (board[i - 1][j - 1] == 0) {
                         //死细胞复活
                         if (n == 3) {
