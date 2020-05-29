@@ -4,6 +4,8 @@ package com.bins.question.dp;
  * @author leo-bin
  * @date 2020/4/9 19:57
  * @apiNote 打家劫舍问题
+ * 来源：leetcode-198
+ * 链接：https://leetcode-cn.com/problems/house-robber/
  */
 public class Rob {
 
@@ -36,20 +38,40 @@ public class Rob {
      */
     public static int rob(int[] nums) {
         //鲁棒
-        int len = nums.length;
-        if (len == 0) {
+        if (nums.length == 0) {
             return 0;
         }
-        if (len == 1) {
-            return nums[0];
-        }
-        int[] dp = new int[len + 1];
+        int[] dp = new int[nums.length + 1];
         dp[0] = 0;
         dp[1] = nums[0];
-        for (int i = 2; i <= len; i++) {
+        for (int i = 2; i <= nums.length; i++) {
             dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
         }
-        return dp[len];
+        return dp[nums.length];
+    }
+
+
+    /**
+     * 优化版dp
+     *
+     * @apiNote 思路：
+     * 1.根据上面的dp解法，其实我们可以进一步的优化空间
+     * 2.毕竟我们全程只用到了dp数组的两个数
+     * 3.那就只要分别设置两个变量并实时更新就行啦
+     * 4.时间复杂度：O(n)
+     * 5.空间复杂度：O(1)
+     */
+    public static int robV2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int pre = 0, prePre = nums[0], cur;
+        for (int i = 1; i < nums.length; i++) {
+            cur = Math.max(prePre, pre + nums[i]);
+            pre = prePre;
+            prePre = cur;
+        }
+        return prePre;
     }
 
 
@@ -60,5 +82,9 @@ public class Rob {
         System.out.println(rob(nums));
         System.out.println(rob(nums1));
         System.out.println(rob(nums2));
+
+        System.out.println(robV2(nums));
+        System.out.println(robV2(nums1));
+        System.out.println(robV2(nums2));
     }
 }
