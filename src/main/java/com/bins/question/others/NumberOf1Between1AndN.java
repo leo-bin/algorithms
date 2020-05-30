@@ -24,9 +24,6 @@ public class NumberOf1Between1AndN {
         if (n < 0) {
             return 0;
         }
-        if (n == 1) {
-            return 1;
-        }
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
         for (int i = 1; i <= n; i++) {

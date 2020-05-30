@@ -58,11 +58,9 @@ public class FindOrder {
         int[] inDegree = new int[numCourses];
         //map来存所有课程的依赖关系，key=课程号，value=依赖key的课程号
         HashMap<Integer, List<Integer>> map = new HashMap<>(16);
-        //bfs队列
         Queue<Integer> queue = new LinkedList<>();
         //拓扑排序结果
         List<Integer> result = new ArrayList<>();
-
         //1.初始化所有课程的依赖关系
         for (int i = 0; i < prerequisites.length; i++) {
             //2.初始化所有课程的入度数
@@ -97,7 +95,6 @@ public class FindOrder {
                 }
             }
         }
-        //4.返回结果
         return result.size() == numCourses ? result.stream().mapToInt(Integer::valueOf).toArray() : new int[0];
     }
 
