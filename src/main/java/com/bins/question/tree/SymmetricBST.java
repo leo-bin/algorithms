@@ -5,6 +5,8 @@ package com.bins.question.tree;
  * @author leo-bin
  * @date 2020/5/11 10:17
  * @apiNote 对称的二叉树
+ * 来源：leetcode-101
+ * 链接：https://leetcode-cn.com/problems/symmetric-tree/
  */
 public class SymmetricBST {
 
