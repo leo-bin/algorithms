@@ -1,112 +1,169 @@
 package com.bins.algorithm.pv;
 
-import java.util.LinkedList;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author leo-bin
  * @date 2020/4/24 17:22
- * @apiNote 生产者消费者，synchronized+LinkedList实现
+ * @apiNote 模拟生产者消费者1, 仿造ArrayBlockingQueue，使用数组加ReentrantLock+二条件算法实现
  */
 public class ProducerAndConsumerV1<T> {
+    /**
+     * pv容器
+     */
+    private final Object[] items;
+    /**
+     * 元素个数统计
+     */
+    private int count;
+    /**
+     * 下一个要取的元素的位置
+     */
+    private int takeIndex;
+    /**
+     * 下一个要放进数组的位置
+     */
+    private int putIndex;
+
 
     /**
-     * 未满锁
+     * 唯一一把锁负责所有线程的安全
      */
-    private final Object notFullLock = new Object();
+    private final ReentrantLock lock;
     /**
-     * 非空锁
+     * 等待取元素的条件
      */
-    private final Object notNullLock = new Object();
+    private final Condition notEmpty;
     /**
-     * 容量
+     * 等待放元素的条件
      */
-    private int capacity;
-    /**
-     * 数据容器
-     */
-    private LinkedList<T> container;
+    private final Condition notFull;
 
 
     public ProducerAndConsumerV1(int capacity) {
-        this.capacity = capacity;
-        this.container = new LinkedList<>();
+        //特判
+        if (capacity <= 0) {
+            throw new IllegalArgumentException();
+        }
+        //初始化
+        this.items = new Object[capacity];
+        this.lock = new ReentrantLock();
+        this.notEmpty = lock.newCondition();
+        this.notFull = lock.newCondition();
     }
 
-    /**
-     * 消费数据
-     */
-    public T get() {
-        //1.如果是空的话，当前消费者线程阻塞
-        while (container.size() == 0) {
-            synchronized (notNullLock) {
-                try {
-                    notNullLock.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        //2.不为空，取数据
-        T data = container.poll();
-        --capacity;
-        //3.唤醒正在阻塞的生产者线程
-        synchronized (notFullLock) {
-            notFullLock.notify();
-        }
-        return data;
-    }
 
     /**
-     * 生产数据
+     * take操作，阻塞操作，如果拿不到就阻塞
      */
-    public boolean set(T value) {
-        //1.满了，当前的生产者线程阻塞
-        while (container.size() == capacity) {
-            synchronized (notFullLock) {
-                try {
-                    notFullLock.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    public T take() throws InterruptedException {
+        final ReentrantLock lock = this.lock;
+        lock.lock();
+        try {
+            //如果没有那就等待呗
+            while (count == 0) {
+                notEmpty.await();
             }
+            //有了再去拿呗
+            return dequeue();
+        } finally {
+            lock.unlock();
         }
-        //2.没满，放数据
-        boolean result = container.add(value);
-        ++capacity;
-        //3.唤醒正在阻塞的消费者线程
-        synchronized (notNullLock) {
-            notNullLock.notify();
+    }
+
+
+    /**
+     * put操作，如果放不下了，那就阻塞，知道有空间为止
+     */
+    public void put(T e) throws InterruptedException {
+        //特判
+        checkNotNull(e);
+        final ReentrantLock lock = this.lock;
+        lock.lock();
+        try {
+            while (count == items.length) {
+                notFull.await();
+            }
+            enqueue(e);
+        } finally {
+            lock.unlock();
         }
-        return result;
+    }
+
+
+    /**
+     * 取目前的take索引所在位置的元素出队列
+     */
+    private T dequeue() {
+        final Object[] items = this.items;
+        //通过takeIndex去取元素
+        @SuppressWarnings("unchecked")
+        T x = (T) items[takeIndex];
+        //取完之后销毁
+        items[takeIndex++] = null;
+        //在takeIndex即将要用完了的时候归零
+        if (takeIndex == items.length) {
+            takeIndex = 0;
+        }
+        count--;
+        //去唤醒正在等待put的生产者线程
+        notFull.signal();
+        return x;
+    }
+
+
+    /**
+     * 在目前的put索引的位置上放一个元素，进队列
+     */
+    private void enqueue(T e) {
+        final Object[] items = this.items;
+        items[putIndex++] = e;
+        //在putIndex即将用完的时候归零
+        if (putIndex == items.length) {
+            putIndex = 0;
+        }
+        count++;
+        notEmpty.signal();
+    }
+
+
+    private static void checkNotNull(Object v) {
+        if (v == null) {
+            throw new NullPointerException();
+        }
     }
 
 
     public static void main(String[] args) {
-        //设置初始容量为10
-        int cap = 10;
-        ProducerAndConsumerV1<String> pv = new ProducerAndConsumerV1<>(cap);
-        //开一个生产者线程
-        new Thread(() -> {
-            System.out.println(Thread.currentThread().getName() + "尝试获取");
-            System.out.println(Thread.currentThread().getName() + "获取了一个元素：" + pv.get());
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        ProducerAndConsumerV1<Integer> pv1 = new ProducerAndConsumerV1<>(10);
+        //开启一个生产者线程不断的往队列里面加数据
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 20; i++) {
+                        pv1.put(i);
+                        System.out.println(Thread.currentThread().getName() + "正在往队列中写入数据：" + i);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            System.out.println(Thread.currentThread().getName() + "设置了一个元素，状态：" + pv.set("test1"));
         }).start();
 
-        //开一个消费者线程
-        new Thread(() -> {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        //开启一个消费者线程不断的去取数据
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 15; i++) {
+                        System.out.println(Thread.currentThread().getName() + "从队列拿到一个数据：" + pv1.take());
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            System.out.println(Thread.currentThread().getName() + "设置了一个元素，状态：" + pv.set("test2"));
-            System.out.println(Thread.currentThread().getName() + "尝试获取");
-            System.out.println(Thread.currentThread().getName() + "获取了一个元素：" + pv.get());
         }).start();
     }
 }

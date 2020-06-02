@@ -1,5 +1,6 @@
 package com.bins.question.math;
 
+
 /**
  * @author leo-bin
  * @date 2020/4/11 21:22
@@ -29,6 +30,14 @@ public class SumOf1AndN {
     }
 
 
+    /**
+     * int n1 = 10000;
+     * int[] sums = new int[n1 + 1];
+     * burute(n1, sums);
+     * System.out.println(Arrays.toString(sums));
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int n = 8;
         for (int i = 1; i <= n; i++) {

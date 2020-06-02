@@ -6,10 +6,6 @@ package com.bins.javabasic.collection.queue.blockingqueue;
  * @apiNote 模拟队列中的数据的对象
  */
 public class DataBean {
-
-    /**
-     * 生产的消息
-     */
     private String message;
 
     public String getMessage() {
@@ -30,5 +26,4 @@ public class DataBean {
                 "message='" + message + '\'' +
                 '}';
     }
-
 }
