@@ -22,11 +22,8 @@ public class SumOf1AndN {
      * 4.空间复杂度：O(n)
      */
     public static int sumOf1AndN(int n) {
-        int i = n;
-        int sum = n;
-        //使用&&的短路特性来做判断
-        boolean flag = (((--i) != 0) && ((sum += sumOf1AndN(n - 1)) > 0));
-        return sum;
+        boolean flag = (n > 0) && ((n += sumOf1AndN(n - 1)) > 0);
+        return n;
     }
 
 
