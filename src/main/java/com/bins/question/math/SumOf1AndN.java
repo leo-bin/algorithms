@@ -4,6 +4,8 @@ package com.bins.question.math;
  * @author leo-bin
  * @date 2020/4/11 21:22
  * @apiNote 求1+2+3+。。。n的和
+ * 来源：leetcode面试题64，剑指offer原题
+ * 链接：https://leetcode-cn.com/problems/qiu-12n-lcof/
  */
 public class SumOf1AndN {
 
