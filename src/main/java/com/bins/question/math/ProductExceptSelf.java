@@ -1,4 +1,4 @@
-package com.bins.question.scale;
+package com.bins.question.math;
 
 import java.util.Arrays;
 
