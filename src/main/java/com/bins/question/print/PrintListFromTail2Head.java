@@ -54,7 +54,7 @@ public class PrintListFromTail2Head {
      *
      * @apiNote 思路：
      * 1.递归解决
-     * 2.时间复杂度为：O(1)
+     * 2.时间复杂度为：O(n)
      * 3.空间复杂度：O(n)
      */
     public static String printListFromTail2Head2(Node head) {
