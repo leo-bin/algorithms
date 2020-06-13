@@ -27,25 +27,23 @@ public class DailyTemperatures {
      *
      * @apiNote 思路：
      * 1.暴力
-     * 2.时间复杂度：O(m*n)
-     * 3.空间复杂度：O(1)
+     * 2.这种暴力的方法虽然能过，但如果仔细分析下，会发现执行过程中重复了很多比较次数
+     * 3.对于这一点我们可以用空间来换时间，优化时间复杂度
+     * 4.时间复杂度：O(m*n)
+     * 5.空间复杂度：O(1)
      */
     public static int[] dailyTemperatures(int[] T) {
         int[] result = new int[T.length];
-        if (T.length <= 1) {
-            return result;
-        }
         for (int i = 0; i < T.length - 1; i++) {
-            int j = i, count = 0;
+            int j = i + 1;
             while (T[i] >= T[j]) {
-                if (j == (T.length - 1)) {
-                    count = 0;
+                if (j == T.length - 1) {
+                    j = i;
                     break;
                 }
                 j++;
-                count++;
             }
-            result[i] = count;
+            result[i] = j - i;
         }
         return result;
     }
@@ -67,10 +65,12 @@ public class DailyTemperatures {
         int[] result = new int[T.length];
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < T.length; i++) {
+            //寻找可计算天数的时机
             while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
                 int pre = stack.pop();
                 result[pre] = i - pre;
             }
+            //所有元素都要入栈
             stack.push(i);
         }
         return result;
