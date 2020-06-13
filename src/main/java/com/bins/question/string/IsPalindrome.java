@@ -22,7 +22,7 @@ public class IsPalindrome {
      * 示例 2:
      * 输入: -121
      * 输出: false
-     * 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+     * 解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数
      * <p>
      * 示例 3:
      * 输入: 10
@@ -55,6 +55,11 @@ public class IsPalindrome {
 
 
     public static void main(String[] args) {
-
+        int x1 = 121;
+        int x2 = 1221;
+        int x3 = 123;
+        System.out.println(isPalindrome(x1));
+        System.out.println(isPalindrome(x2));
+        System.out.println(isPalindrome(x3));
     }
 }
