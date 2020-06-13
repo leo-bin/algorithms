@@ -84,6 +84,7 @@ public class EquationsPossible {
         return true;
     }
 
+
     /**
      * 将两个节点合并，这里就是将节点1的根节点指向节点2
      */
