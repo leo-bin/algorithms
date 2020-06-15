@@ -5,28 +5,27 @@ import java.util.Arrays;
 /**
  * @author leo-bin
  * @date 2020/3/27 16:12
- * @apiNote 旋转数组
+ * @apiNote 搜索旋转数组
+ * 来源：leetcode-33
+ * 链接：https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
  */
-public class RotateArray {
+public class SearchRotateArray {
 
     /**
-     * 题目描述：（旋转数组的最小值）
-     * 1.把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
-     * 2.输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。
-     * 3.例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。
-     * 4.给出的所有元素都大于0，若数组大小为0，请返回0。
-     *
-     * @apiNote 思路：
-     * 1.二分的思想
-     */
-    public static int minNumberInRotateArray(int[] nums) {
-
-        return 0;
-    }
-
-
-    /**
-     * 在旋转数组中查找某个值
+     * 题目描述：
+     * 1.假设按照升序排序的数组在预先未知的某个点上进行了旋转
+     * 2.例如，数组 [0,1,2,4,5,6,7]可能变为 [4,5,6,7,0,1,2] )
+     * 3.搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1
+     * 4.你可以假设数组中不存在重复的元素
+     * 5.你的算法时间复杂度必须是O(log n)级别
+     * <p>
+     * 示例 1:
+     * 输入: nums = [4,5,6,7,0,1,2], target = 0
+     * 输出: 4
+     * <p>
+     * 示例 2:
+     * 输入: nums = [4,5,6,7,0,1,2], target = 3
+     * 输出: -1
      *
      * @apiNote 思路：
      * 1.先判断旋转点在mid值的左边还是右边

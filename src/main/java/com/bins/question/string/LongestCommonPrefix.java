@@ -6,6 +6,8 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/4/6 9:59
  * @apiNote 最长公共前缀
+ * 来源：leetcode-14
+ * 链接：https://leetcode-cn.com/problems/longest-common-prefix/
  */
 public class LongestCommonPrefix {
 
@@ -35,18 +37,16 @@ public class LongestCommonPrefix {
      */
     public static String longestCommonPrefix(String[] strs) {
         int len = strs.length;
-        StringBuilder result = new StringBuilder();
         //鲁棒
         if (len == 0) {
             return "";
         }
+        StringBuilder result = new StringBuilder();
         //按照字典排序
         Arrays.sort(strs);
         //求排序之后第一个字符串和最后一个字符串
-        int first = strs[0].length();
-        int last = strs[len - 1].length();
-        int count = Math.min(first, last);
-        for (int i = 0; i < count; i++) {
+        int n = Math.min(strs[0].length(), strs[len - 1].length());
+        for (int i = 0; i < n; i++) {
             //找公共的字符
             if (strs[0].charAt(i) == strs[len - 1].charAt(i)) {
                 result.append(strs[0].charAt(i));
