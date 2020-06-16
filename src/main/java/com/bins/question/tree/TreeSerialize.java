@@ -1,10 +1,8 @@
 package com.bins.question.tree;
 
 
-import javax.swing.tree.TreeNode;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
