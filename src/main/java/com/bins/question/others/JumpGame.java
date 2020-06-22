@@ -26,7 +26,7 @@ public class JumpGame {
      * @apiNote 思路：
      * 1.贪心
      * 2.我们只要从第一个位置开始，每次找到某个范围的能够跳的最远的位置最为下一个位置
-     * 3.时间复杂度：O(n*n)(最坏)
+     * 3.时间复杂度：O(n)(平均)
      * 4.空间复杂度：O(1)
      */
     public static int jump(int[] nums) {
@@ -34,7 +34,7 @@ public class JumpGame {
             return 0;
         }
         //记录最少跳跃次数
-        int jumpCount = 0;
+        int count = 0;
         //跳跃窗口起始位置，从第一个元素开始
         int start = 0;
         //跳跃窗口结束位置
@@ -44,14 +44,15 @@ public class JumpGame {
         while (end < nums.length - 1) {
             //在当前窗口内寻找下一个跳跃点
             for (int i = start; i <= end; i++) {
+                //这里是关键，一定要弄明白为什么是要额外+i
                 nextJumpIndex = Math.max(nextJumpIndex, nums[i] + i);
             }
             //更新窗口位置和跳跃次数
             start = end + 1;
             end = nextJumpIndex;
-            jumpCount++;
+            count++;
         }
-        return jumpCount;
+        return count;
     }
 
 
