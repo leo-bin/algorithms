@@ -11,13 +11,12 @@ import java.util.List;
  */
 public class WordBreak {
 
-
     /**
      * 单词拆分
      * 1.给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict
-     * 2.判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。
-     * 3.拆分时可以重复使用字典中的单词。
-     * 4.你可以假设字典中没有重复的单词。
+     * 2.判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词
+     * 3.拆分时可以重复使用字典中的单词
+     * 4.你可以假设字典中没有重复的单词
      * <p>
      * 示例 1：
      * 输入: s = "leetcode", wordDict = ["leet", "code"]
@@ -43,16 +42,14 @@ public class WordBreak {
      */
     public static boolean wordBreak(String s, List<String> wordDict) {
         int len = s.length();
-        //用set来存储字典
-        HashSet<String> set = new HashSet<>(wordDict);
-        //1.创建dp数组
         boolean[] dp = new boolean[len + 1];
-        //2.初始化dp数组(空字符串可以拆分成任何字典)
         dp[0] = true;
-        //3.根据dp的状态公式填充dp数组
+        //1.字典使用set而不是list是要加快contains速度，list中contains是全文遍历O(n)，而set是哈希表O(1)
+        HashSet<String> set = new HashSet<>(wordDict);
+        //2.遍历s同时构造单独的单词去字典中判断是否存在
         for (int i = 1; i <= len; i++) {
             for (int j = 0; j < i; j++) {
-                //注意这里，dp[j]是用来隔断字符的，如果dp[j]=false，说明，s[0-j+1]已经被分过了
+                //3.dp[j]的作用是判断当前是否可以拆，为true说明在j之前的单词已经拆过了，所以这里j可以继续拆
                 if (dp[j] && set.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
