@@ -1,7 +1,6 @@
 package com.bins.question.list;
 
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * @author leo-bin
