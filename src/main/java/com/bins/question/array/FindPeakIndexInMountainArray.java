@@ -9,7 +9,6 @@ package com.bins.question.array;
  */
 public class FindPeakIndexInMountainArray {
 
-
     /**
      * 题目描述：
      * 1.我们把符合下列属性的数组 A 称作山脉
