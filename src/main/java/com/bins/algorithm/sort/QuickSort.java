@@ -26,14 +26,16 @@ public class QuickSort {
      * 空间复杂度：O(1)
      */
     public static void quickSort(int[] nums, int left, int right) {
-        if (left < right) {
-            //1.一次分治，找到一个中轴
-            int pivot = partition(nums, left, right);
-            //2.对中轴左边的元素进行一次分治
-            quickSort(nums, left, pivot - 1);
-            //3.对中轴右边的元素进行一次分治
-            quickSort(nums, pivot + 1, right);
+        //递归结束条件
+        if (left >= right) {
+            return;
         }
+        //1.一次分治，找到一个中轴
+        int pivot = partition(nums, left, right);
+        //2.对中轴左边的元素进行一次分治
+        quickSort(nums, left, pivot - 1);
+        //3.对中轴右边的元素进行一次分治
+        quickSort(nums, pivot + 1, right);
     }
 
     /**
