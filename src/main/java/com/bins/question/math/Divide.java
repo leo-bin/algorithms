@@ -9,7 +9,6 @@ package com.bins.question.math;
  */
 public class Divide {
 
-
     /**
      * 题目描述：
      * 1.给定两个整数，被除数 dividend 和除数 divisor

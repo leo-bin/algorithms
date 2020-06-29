@@ -7,7 +7,6 @@ package com.bins.question.math;
  */
 public class IsPowerOf2 {
 
-
     /**
      * 判断一个数是否为2的整数幂（解法一）
      *
