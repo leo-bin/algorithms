@@ -37,7 +37,7 @@ public class BinaryHeap {
      * 6.这里采用的是单向赋值的方法，不需要每次比较都需要互换一次，直到循环结束之后，在进行最终赋值
      * 7.一次交换之后，让找到的较小的那个节点重新成为父节点，并找出该父节点的左孩子
      * 8.继续循环，直到节点没有孩子节点为止（说明是叶子节点了）
-     * 9.时间复杂度：O(logn)
+     * 9.时间复杂度：O(log(n))
      * 10.空间复杂度：O(1)
      */
     public static void downAdjust(int[] nums, int parentIndex, int len) {

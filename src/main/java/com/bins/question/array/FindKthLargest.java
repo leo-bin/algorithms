@@ -162,6 +162,7 @@ public class FindKthLargest {
         return minHeap.peek();
     }
 
+
     /**
      * 解法四，基于快速排序的基础上，我们进行分治
      *
@@ -183,6 +184,58 @@ public class FindKthLargest {
                 high = index - 1;
             }
         }
+    }
+
+
+    /**
+     * 我们直接使用堆排序
+     *
+     * @apiNote 思路：
+     * 1.使用堆排序
+     * 2.时间复杂度：O(n*log(n))
+     * 3.空间复杂度：O(1)
+     */
+    public static int findKthLargestV5(int[] nums, int k) {
+        heapSort(nums, nums.length);
+        return nums[nums.length - k];
+    }
+
+    /**
+     * 堆排序
+     */
+    public static void heapSort(int[] nums, int len) {
+        //1.构建大顶堆(这里是找最后一个非叶子节点)
+        for (int i = (len - 2) / 2; i >= 0; i--) {
+            downJust(nums, i, len);
+        }
+        //2.找二叉堆的堆顶元素，并重新进行调整
+        for (int i = len - 1; i > 0; i--) {
+            int t = nums[0];
+            nums[0] = nums[i];
+            nums[i] = t;
+            //重新调整
+            downJust(nums, 0, i);
+        }
+    }
+
+    /**
+     * 元素下沉操作
+     */
+    public static void downJust(int[] nums, int parentIndex, int len) {
+        int parentValue = nums[parentIndex];
+        int childIndex = 2 * parentIndex + 1;
+        while (childIndex < len) {
+            if (childIndex + 1 < len && nums[childIndex + 1] > nums[childIndex]) {
+                childIndex++;
+            }
+            if (parentValue > nums[childIndex]) {
+                break;
+            }
+            nums[parentIndex] = nums[childIndex];
+            parentIndex = childIndex;
+            childIndex = 2 * parentIndex + 1;
+        }
+        nums[parentIndex] = parentValue;
     }
 
 

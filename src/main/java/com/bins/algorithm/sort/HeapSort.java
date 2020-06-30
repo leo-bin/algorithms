@@ -22,7 +22,7 @@ public class HeapSort {
     public static void downAdjust(int[] nums, int parentIndex, int len) {
         //暂存这个父节点元素
         int tmp = nums[parentIndex];
-        //1.找到该父节点的左孩子的下标
+        //找到该父节点的左孩子的下标
         int childIndex = 2 * parentIndex + 1;
         while (childIndex < len) {
             if (childIndex + 1 < len && nums[childIndex + 1] > nums[childIndex]) {
