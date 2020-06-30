@@ -1,5 +1,6 @@
 package com.bins.question.others;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -75,6 +76,8 @@ public class Stack2Queue {
         System.out.println("队列(2,3,4)，出队列的结果是：" + pop());
         System.out.println("队列(3,4)，出队列的结果是：" + pop());
         System.out.println("队列(4)，出队列的结果是：" + pop());*/
+
+        LinkedList<Integer> a=new LinkedList<>();
 
         //第三种情况：直接执行出队列操作，预测输出：-1
         System.out.println("队列：（），出队列的结果是：" + pop());
