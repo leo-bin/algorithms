@@ -1,4 +1,4 @@
-package com.bins.question.string;
+package com.bins.question.dp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
