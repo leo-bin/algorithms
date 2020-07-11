@@ -9,7 +9,6 @@ package com.bins.question.dp;
  */
 public class MinCostTickets {
 
-
     /**
      * 题目描述：
      * 1.在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行

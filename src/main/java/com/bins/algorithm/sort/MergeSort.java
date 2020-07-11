@@ -15,7 +15,7 @@ public class MergeSort {
      * @apiNote 思路：
      * 1.使用递归，不断的将原数组进行划分
      * 2.直到原数组中只有一个元素了，在调通合并的方法，将分组一一排序合并
-     * 3.时间复杂度：O(nlogn)
+     * 3.时间复杂度：O(n*log(n))
      * 4.稳定排序
      */
     public static int[] mergeSort(int[] target) {
@@ -30,12 +30,12 @@ public class MergeSort {
 
 
     /**
-     * 归并
+     * 归并两个数组，重新排序为一个新数组
      */
     public static int[] mergeSortHelper(int[] left, int[] right) {
-        //合并结果
         int[] result = new int[left.length + right.length];
         for (int index = 0, i = 0, j = 0; index < result.length; index++) {
+            //前面两个if else表示要么left数组到头了，要么right数组到头了
             if (i >= left.length) {
                 result[index] = right[j++];
             } else if (j >= right.length) {
