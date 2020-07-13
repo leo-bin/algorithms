@@ -26,14 +26,10 @@ public class ArrayFind2D {
      * @apiNote 思路：
      * 1.把二维数组看成多个一维数组
      * 2.分别对一维数组使用二分查找
-     * 3.时间复杂度：O(n*logn)
+     * 3.时间复杂度：O(n*(log(n))
      * 4.空间复杂度：O(1)
      */
     public static boolean arrayFind(int[][] nums, int target) {
-        //鲁棒
-        if (nums.length == 0) {
-            return false;
-        }
         for (int i = 0; i < nums.length; i++) {
             int low = 0;
             int high = nums.length - 1;
