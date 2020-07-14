@@ -42,7 +42,7 @@ public class EnumSingleton {
 
 
     /**
-     * 3.提供一个共有的静态方法用来获取本实例
+     * 3.提供一个公有的静态方法用来获取本实例
      */
     public static EnumSingleton getInstance() {
         return Singleton.INSTANCE.getInstance();
