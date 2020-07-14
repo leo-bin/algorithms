@@ -4,6 +4,8 @@ package com.bins.question.list;
  * @author leo-bin
  * @date 2020/4/9 13:53
  * @apiNote 合并两个排序的链表
+ * 来源：leetcode-21
+ * 链接：https://leetcode-cn.com/problems/merge-two-sorted-lists/
  */
 public class MergeList {
 
@@ -27,14 +29,15 @@ public class MergeList {
      *
      * @apiNote 思路：
      * 1.解法一，遍历，A,B两个链表，从A和B的头节点开始依次往后遍历，每次都将比较小的节点设为头结点
-     * 2.时间复杂度：O(n)
+     * 2.时间复杂度：O(m+n)
      * 3.空间复杂度：O(1)
      */
     public static ListNode mergeList(ListNode list1, ListNode list2) {
         //鲁棒
         if (list1 == null) {
             return list2;
-        } else if (list2 == null) {
+        }
+        if (list2 == null) {
             return list1;
         }
         ListNode newHead = null;
@@ -77,7 +80,7 @@ public class MergeList {
      *
      * @apiNote 思路：
      * 1.递归解题
-     * 2.时间复杂度：O(1)
+     * 2.时间复杂度：O(m+n)
      * 3.空间复杂度：O(m+n)
      */
     public static ListNode mergeV2(ListNode list1, ListNode list2) {
