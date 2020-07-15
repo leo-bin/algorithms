@@ -9,7 +9,6 @@ import java.util.Scanner;
  */
 public class SumOfPath {
 
-
     /**
      * 题目描述：
      * <p>
