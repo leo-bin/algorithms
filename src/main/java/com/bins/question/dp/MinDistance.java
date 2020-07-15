@@ -4,6 +4,8 @@ package com.bins.question.dp;
  * @author leo-bin
  * @date 2020/3/25 14:57
  * @apiNote 编辑距离
+ * 来源：leetcode-72
+ * 链接：https://leetcode-cn.com/problems/edit-distance/
  */
 public class MinDistance {
 
@@ -33,8 +35,8 @@ public class MinDistance {
      * 7.二，不相等，那就替换，替换的情况，dp[i][j]=dp[i-1][j-1]+1(不需要改变原来的长度)
      * 8.三，不相等，那就删除，dp[i][j]=dp[i-1][j]+1,原来的字符串长度-1
      * 9.四，不相等，那增加，dp[i][j]=dp[i][j-1]+1,原来的字符长度+1
-     * 10.时间复杂度：O(n*n)
-     * 11.空间复杂度：O(n*n)
+     * 10.时间复杂度：O(m*n)
+     * 11.空间复杂度：O(m*n)
      */
     public static int minDistance(String word1, String word2) {
         int len1 = word1.length();
@@ -63,6 +65,10 @@ public class MinDistance {
         }
         return dp[len1][len2];
     }
+
+
+
+
 
 
     public static void main(String[] args) {
