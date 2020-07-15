@@ -9,10 +9,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //大概是10亿
-        /*System.out.println(256 << 22);*/
-        String s = "";
-        System.out.println(s);
+        System.out.println(10 >> 1);
     }
 
 

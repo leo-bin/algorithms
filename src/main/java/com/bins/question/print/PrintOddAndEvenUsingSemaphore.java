@@ -27,34 +27,28 @@ public class PrintOddAndEvenUsingSemaphore {
      */
     private Semaphore semaphoreEven = new Semaphore(0);
 
+
     /**
-     * 打印奇数
+     * 打印奇数或者偶数
      */
-    public void printOdd(int number) {
+    public void printOddOrEven(int number, String threadName) {
         //为奇数才打印
         if ((number & 1) == 1) {
-            print(number, semaphoreOdd, semaphoreEven);
+            print(number, semaphoreOdd, semaphoreEven, threadName);
+        } else {
+            print(number, semaphoreEven, semaphoreOdd, threadName);
         }
     }
 
-    /**
-     * 打印偶数
-     */
-    public void printEven(int number) {
-        //为偶数才打印
-        if ((number & 1) == 0) {
-            print(number, semaphoreEven, semaphoreOdd);
-        }
-    }
 
     /**
      * 打印数字
      */
-    private void print(int number, Semaphore currentSemaphore, Semaphore nextSemaphore) {
+    private void print(int number, Semaphore currentSemaphore, Semaphore nextSemaphore, String threadName) {
         try {
             //抢当前的资源数,拿到的资源数为1，成功抢到，0代表没抢到，当前线程阻塞
             currentSemaphore.acquire();
-            System.out.println(number);
+            System.out.println("当前线程是：" + threadName + "打印结果是：" + number);
             //当前线程执行完毕，释放下一个信号量的资源数
             nextSemaphore.release();
         } catch (InterruptedException e) {
@@ -74,7 +68,9 @@ public class PrintOddAndEvenUsingSemaphore {
             @Override
             public void run() {
                 for (int i = 1; i <= n; i++) {
-                    printOddAndEvenUsingSemaphore.printOdd(i);
+                    if ((i & 1) == 1) {
+                        printOddAndEvenUsingSemaphore.printOddOrEven(i, Thread.currentThread().getName());
+                    }
                 }
             }
         }).start();
@@ -84,7 +80,9 @@ public class PrintOddAndEvenUsingSemaphore {
             @Override
             public void run() {
                 for (int i = 1; i <= n; i++) {
-                    printOddAndEvenUsingSemaphore.printEven(i);
+                    if ((i & 1) == 0) {
+                        printOddAndEvenUsingSemaphore.printOddOrEven(i, Thread.currentThread().getName());
+                    }
                 }
             }
         }).start();
