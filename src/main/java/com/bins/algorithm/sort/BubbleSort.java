@@ -20,9 +20,8 @@ public class BubbleSort {
     public static void bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = 0; j < nums.length - i - 1; j++) {
-                int temp;
                 if (nums[j] > nums[j + 1]) {
-                    temp = nums[j];
+                    int temp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
                 }
@@ -43,9 +42,8 @@ public class BubbleSort {
             //每次开启新的一轮比较之前都设置一个标志位，判断当前数组是否有序
             boolean isSorted = true;
             for (int j = 0; j < nums.length - i - 1; j++) {
-                int temp;
                 if (nums[j] > nums[j + 1]) {
-                    temp = nums[j];
+                    int temp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
                     //有元素交换了，就说明当前数组还是无序的

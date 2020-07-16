@@ -15,7 +15,7 @@ public class SelectSort {
      * 2.时间复杂度：平均时间=最好情况=最差情况=O(n^2)
      * 3.不稳定排序
      */
-    public static int[] selectSort(int[] target) {
+    public static void selectSort(int[] target) {
         //第一层循环控制选择排序的轮次
         for (int i = 0; i < target.length - 1; i++) {
             //第二层循环控制每一轮循环比较的次数
@@ -28,7 +28,6 @@ public class SelectSort {
                 }
             }
         }
-        return target;
     }
 
 

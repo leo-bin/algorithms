@@ -21,7 +21,7 @@ public class QuickSort {
      * 时间复杂度：
      * 情况最好：O(n*log(n))
      * 情况最差：O(n^2)
-     * 空间复杂度：O(1)
+     * 空间复杂度：O(log(n))
      */
     public static void quickSort(int[] nums, int left, int right) {
         //1.递归结束条件

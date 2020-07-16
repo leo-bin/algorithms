@@ -20,20 +20,17 @@ public class InsertSort {
      * 4.时间复杂度：O(n*n)
      * 5.稳定排序
      */
-    public static int[] insertSort(int[] target) {
-        for (int i = 1; i < target.length; i++) {
-            int j = i;
-            //这里使用while循环不用for，提高效率
-            while (j > 0) {
-                if (target[j] < target[j - 1]) {
-                    int temp = target[j];
-                    target[j] = target[j - 1];
-                    target[j - 1] = temp;
+    public static int[] insertSort(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (nums[j] < nums[j - 1]) {
+                    int t = nums[j];
+                    nums[j] = nums[j - 1];
+                    nums[j - 1] = t;
                 }
-                j--;
             }
         }
-        return target;
+        return nums;
     }
 
 
