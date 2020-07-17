@@ -1,4 +1,4 @@
-package com.bins.question.array;
+package com.bins.question.binary;
 
 /**
  * @author leo-bin
@@ -41,7 +41,7 @@ public class ArrayFind1D {
      * @apiNote 思路：
      * 1.分别设置三个指针left，mid和right
      * 2.通过不断缩小比较的范围来查找元素
-     * 3.时间复杂度：O(logn)
+     * 3.时间复杂度：O(log(n))
      * 4.空间复杂度：O(1)
      */
     public static int find2(int[] nums, int target) {
