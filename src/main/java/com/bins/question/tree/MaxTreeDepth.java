@@ -7,10 +7,11 @@ import java.util.Queue;
 /**
  * @author leo-bin
  * @date 2020/4/12 14:51
- * @apiNote 二叉树的深度
+ * @apiNote 二叉树的最大深度
+ * 来源：leetcode-104
+ * 链接：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
  */
-public class TreeDepth {
-
+public class MaxTreeDepth {
 
     /**
      * 二叉树节点
@@ -60,34 +61,28 @@ public class TreeDepth {
             return 0;
         }
         Queue<TreeNode> queue = new LinkedList<>();
-        //统计每一层的节点个数
-        int count;
-        //记录每一层的节点个数
-        int width = 0;
-        //数的深度
         int depth = 0;
         TreeNode current;
         queue.offer(root);
         while (!queue.isEmpty()) {
-            //新的一层，节点个数从0开始
-            count = 0;
-            //此时队列中的元素个数就是当前层的节点个数
-            width = queue.size();
-            while (count < width) {
+            //统计每一层的节点个数
+            int count = 0;
+            int width=queue.size();
+            while (count++ < width) {
                 current = queue.poll();
-                if (current != null && current.left != null) {
-                    queue.offer(current.left);
+                if (current != null) {
+                    if (current.left != null) {
+                        queue.offer(current.left);
+                    }
+                    if (current.right != null) {
+                        queue.offer(current.right);
+                    }
                 }
-                if (current != null && current.right != null) {
-                    queue.offer(current.right);
-                }
-                count++;
             }
             depth++;
         }
         return depth;
     }
-
 
 
     public static void main(String[] args) {
