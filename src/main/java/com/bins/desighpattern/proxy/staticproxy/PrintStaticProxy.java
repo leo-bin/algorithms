@@ -14,7 +14,7 @@ public class PrintStaticProxy implements PrintInterFace {
     /**
      * 被代理对象，打印名字对象
      */
-    PrintName printName;
+    private PrintName printName;
 
     /**
      * 构造方法
@@ -28,24 +28,15 @@ public class PrintStaticProxy implements PrintInterFace {
         }
     }
 
-    /**
-     * @param name 需要打印的名字
-     */
+
     @Override
     public void print(String name) {
-        /*//在正式调用print方法之前调用增强方法
-        otherAction(name);*/
+        //1.执行代理方法
+        printName.print(name);
 
-        //开始计时
-        MethodMonitorUtil.start();
-
-        System.out.println("name=" + name);
-
-        //在正式调用print方法之后调用增强方法
+        //2.在正式调用print方法之后调用增强方法
         otherAction(name);
 
-        //结束计时
-        MethodMonitorUtil.finish("static print");
     }
 
     /**

@@ -8,7 +8,6 @@ package com.bins.desighpattern.proxy;
  */
 public class PrintName implements PrintInterFace {
 
-
     @Override
     public void print(String name) {
         System.out.println("name=" + name);

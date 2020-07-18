@@ -7,7 +7,6 @@ package com.bins.desighpattern.proxy;
  */
 public interface PrintInterFace {
 
-
     /**
      * 打印方法
      *

@@ -1,7 +1,5 @@
 package com.bins.desighpattern.proxy.dynamicproxy.cglib;
 
-import com.bins.util.MethodMonitorUtil;
-import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
@@ -9,27 +7,10 @@ import java.lang.reflect.Method;
 
 /**
  * @author leo-bin
- * @date 2020/3/2 12:17
- * @apiNote CGLIB动态代理实现
+ * @date 2020/7/18 15:57
+ * @apiNote CGLIB动态代理测试，自定义加强方法
  */
-public class CGLIBProxy implements MethodInterceptor {
-
-    /**
-     * 根据一个类型产生代理类，此方法不要求一定放在MethodInterceptor中
-     *
-     * @param clazz 被代理类的Class对象
-     * @return 代理对象
-     */
-    public Object CreatProxyObj(Class<?> clazz) {
-        Enhancer enhancer = new Enhancer();
-
-        enhancer.setSuperclass(clazz);
-
-        enhancer.setCallback(this);
-
-        return enhancer.create();
-    }
-
+public class MyMethodInterceptor implements MethodInterceptor {
 
     /**
      * 方法拦截器
@@ -43,16 +24,12 @@ public class CGLIBProxy implements MethodInterceptor {
      */
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        //开始计时
-        MethodMonitorUtil.start();
-
         //调用父类中的方法
         Object result = methodProxy.invokeSuper(o, objects);
+
         //执行增强方法
         otherAction(objects);
 
-        //结束计时
-        MethodMonitorUtil.finish(method.getName());
         return result;
     }
 
