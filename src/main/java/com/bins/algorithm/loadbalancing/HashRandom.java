@@ -17,7 +17,7 @@ public class HashRandom {
 
     private static void init() {
         String prefix = "192.168.1.";
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 10; i++) {
             serverList.add(prefix + i);
         }
     }
@@ -39,7 +39,7 @@ public class HashRandom {
 
 
     public static void main(String[] args) {
-        int n = 50;
+        int n = 20;
         init();
         String sessionIDPrefix = "sessionId";
         for (int i = 1; i <= n; i++) {

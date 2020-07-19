@@ -18,7 +18,7 @@ public class FullRound {
      */
     private static void init() {
         String prefix = "192.168.1.";
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 10; i++) {
             serverList.add(prefix + i);
         }
     }
