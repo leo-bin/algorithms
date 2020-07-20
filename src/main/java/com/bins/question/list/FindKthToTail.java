@@ -68,18 +68,12 @@ public class FindKthToTail {
      * 6.空间复杂度：O(1)
      */
     public static ListNode findKthToTail2(ListNode head, int k) {
-        //鲁棒
-        if (k <= 0) {
-            return null;
-        }
+        //特判
         if (head == null) {
             return head;
         }
         //设置两个指针，p1先走，p2后走，中间隔k-1个节点
-        ListNode p1;
-        ListNode p2;
-        p1 = head;
-        p2 = head;
+        ListNode p1 = head, p2 = head;
         int count = 1;
         while (p1.next != null) {
             if (count > (k - 1)) {
