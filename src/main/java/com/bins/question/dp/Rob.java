@@ -3,12 +3,11 @@ package com.bins.question.dp;
 /**
  * @author leo-bin
  * @date 2020/4/9 19:57
- * @apiNote 打家劫舍问题
+ * @apiNote 打家劫舍问题 Ⅰ
  * 来源：leetcode-198
  * 链接：https://leetcode-cn.com/problems/house-robber/
  */
 public class Rob {
-
 
     /**
      * 题目描述：
@@ -37,7 +36,7 @@ public class Rob {
      * 5.空间复杂度：O(n)
      */
     public static int rob(int[] nums) {
-        //鲁棒
+        //特判
         if (nums.length == 0) {
             return 0;
         }
@@ -62,16 +61,18 @@ public class Rob {
      * 5.空间复杂度：O(1)
      */
     public static int robV2(int[] nums) {
+        //特判
         if (nums.length == 0) {
             return 0;
         }
-        int pre = 0, prePre = nums[0], cur;
+        int pre = nums[0], prePre = 0, cur = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            cur = Math.max(prePre, pre + nums[i]);
-            pre = prePre;
-            prePre = cur;
+            cur = Math.max(pre, prePre + nums[i]);
+            //更新状态
+            prePre = pre;
+            pre = cur;
         }
-        return prePre;
+        return cur;
     }
 
 
