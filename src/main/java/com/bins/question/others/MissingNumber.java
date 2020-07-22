@@ -1,4 +1,4 @@
-package com.bins.question.array;
+package com.bins.question.others;
 
 import java.util.Arrays;
 
