@@ -7,10 +7,11 @@ import java.util.Queue;
 /**
  * @author leo-bin
  * @date 2020/4/14 10:18
- * @apiNote 二叉树的镜像
+ * @apiNote 二叉树的镜像（也叫做二叉树的反转）
+ * 来源：leetcode-226
+ * 链接：https://leetcode-cn.com/problems/invert-binary-tree/
  */
 public class TreeMirror {
-
 
     /**
      * 二叉树节点
