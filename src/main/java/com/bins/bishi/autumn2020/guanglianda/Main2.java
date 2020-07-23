@@ -1,5 +1,6 @@
 package com.bins.bishi.autumn2020.guanglianda;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -31,11 +32,26 @@ public class Main2 {
      * 1
      *
      * @apiNote 思路：
-     * 1.
+     * 1.唉，当时时间快到了，暴力都没去想了，昨天复盘的时候有自暴自弃
+     * 2.今天看了别人的题解，竟然需要用贪心
+     * 3.思路就是再开一个数组，然后对这个数组排序
+     * 4.然后从尾到头开始遍历这两个数组
+     * 5.遇到相同的元素说明原位置不需要移动
+     * 6.但是不相同的话就需要移动原位置，但是这个时候是不需要移动排序数组的
+     * 7.我们只需要记录不相同的个数就行
      */
     public static int code(int[] nums) {
-
-        return 1;
+        int[] sortNums = Arrays.copyOfRange(nums, 0, nums.length);
+        Arrays.sort(sortNums);
+        int count = 0;
+        for (int i = nums.length - 1, j = nums.length - 1; i >= 0 && j >= 0; i--) {
+            if (nums[i] != sortNums[j]) {
+                count++;
+            } else {
+                j--;
+            }
+        }
+        return count;
     }
 
 

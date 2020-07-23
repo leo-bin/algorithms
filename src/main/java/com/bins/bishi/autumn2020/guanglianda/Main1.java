@@ -63,8 +63,6 @@ public class Main1 {
      * 输入：1 4 4 5     输出：-1
      * 输入：1 4 4 4 5 5 5 输出：20
      * 输入：
-     *
-     * @param args
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
