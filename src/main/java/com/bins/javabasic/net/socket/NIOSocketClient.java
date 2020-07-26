@@ -19,7 +19,6 @@ import java.util.Set;
  * @apiNote nio模型下的客户端
  */
 public class NIOSocketClient {
-
     public static void main(String[] args) {
         try {
             // 打开socket通道
@@ -30,8 +29,10 @@ public class NIOSocketClient {
             Selector selector = Selector.open();
             // 注册连接服务端socket动作
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
+
             // 连接
             socketChannel.connect(new InetSocketAddress("127.0.0.1", 8000));
+
             //数据缓冲区
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             while (true) {
@@ -43,14 +44,14 @@ public class NIOSocketClient {
                     while (iter.hasNext()) {
                         SelectionKey key = iter.next();
                         // 取出每一个key
+
                         if (key.isConnectable()) {
                             SocketChannel client = (SocketChannel) key.channel();
-
                             if (client.isConnectionPending()) {
                                 client.finishConnect();
                                 byteBuffer.clear();
                                 // 向缓冲区中设置内容
-                                byteBuffer.put(("isConnect,当前的时间为：" + new Date()).getBytes());
+                                byteBuffer.put(("当前的时间为：" + new Date()).getBytes());
                                 byteBuffer.flip();
                                 // 输出内容
                                 client.write(byteBuffer);
