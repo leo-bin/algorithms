@@ -47,8 +47,8 @@ public class CoinChange {
         //3.根据状态方程打表
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
-                //当前的金额要大于等于当前的硬币
-                if (i - coin >= 0) {
+                //金额不能小于当前的硬币
+                if (coin <= i) {
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
