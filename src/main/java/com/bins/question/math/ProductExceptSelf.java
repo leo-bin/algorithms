@@ -43,12 +43,12 @@ public class ProductExceptSelf {
         int len = nums.length;
         int[] result = new int[len];
         int[] left = new int[len];
-        //1.现求前缀乘积之和
+        //1.先求前缀乘积之和
         left[0] = 1;
         for (int i = 1; i < len; i++) {
             left[i] = left[i - 1] * nums[i - 1];
         }
-        //2.接着求后缀乘积之和(反着求就行,这里服用了result数组代替后缀乘积之和)
+        //2.接着求后缀乘积之和(反着求就行,这里复用了result数组代替后缀乘积之和)
         result[len - 1] = 1;
         for (int i = len - 2; i >= 0; i--) {
             result[i] = result[i + 1] * nums[i + 1];

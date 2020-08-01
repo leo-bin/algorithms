@@ -94,10 +94,10 @@ public class MySqrt {
         int x2 = 9;
         int x3 = 25;
         System.out.println("///////解法一/////////");
-        /*System.out.println(mySqrt(x));
+        System.out.println(mySqrt(x));
         System.out.println(mySqrt(x1));
         System.out.println(mySqrt(x2));
-        System.out.println(mySqrt(x3));*/
+        System.out.println(mySqrt(x3));
 
         System.out.println("///////解法二/////////");
         System.out.println(mySqrtV2(x));
