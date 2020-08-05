@@ -7,7 +7,6 @@ package com.bins.question.dp;
  */
 public class LongestCommonSubSequence {
 
-
     /**
      * 题目描述：
      * 1.给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列
@@ -45,37 +44,32 @@ public class LongestCommonSubSequence {
      * 3.首先，我们在判断的时候，如果遇到不相等的话，那就需要删除当前的字符
      * 4.两个字符串，删哪一个？比较长度就行！删序列最短的就行！
      * 5.什么意思？就是去掉某个字符之后，当前位置的最长的子序列是最大的！
-     * 6.dp[0][0-len2+1]=0,dp[0-len1+1][0]
+     * 6.dp[0][0-text2.length()+1]=0,dp[0-text1.length()+1][0]
      * 7.状态方程等于：dp[i][j]=max(dp[i][j-1],dp[i-1][j])(这里就是判断当前位置，是删除str1，还是str2中的字符)
      * 8.时间复杂度：O(n*n)
      * 9.空间复杂度：O(n*n)
      */
-    public static int longestCommonSubSequence(String str1, String str2) {
-        int len1 = str1.length();
-        int len2 = str2.length();
-        if (len1 == 0 || len2 == 0) {
-            return 0;
-        }
+    public static int longestCommonSubSequence(String text1, String text2) {
         //1.创建dp数组
-        int[][] dp = new int[len1 + 1][len2 + 1];
+        int[][] dp = new int[text1.length() + 1][text2.length() + 1];
         //2.初始化dp方程
-        for (int i = 0; i <= len1; i++) {
+        for (int i = 0; i <= text1.length(); i++) {
             dp[i][0] = 0;
         }
-        for (int j = 0; j <= len2; j++) {
+        for (int j = 0; j <= text2.length(); j++) {
             dp[0][j] = 0;
         }
         //3.根据状态方程打表
-        for (int i = 1; i <= len1; i++) {
-            for (int j = 1; j <= len2; j++) {
-                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+        for (int i = 1; i <= text1.length(); i++) {
+            for (int j = 1; j <= text2.length(); j++) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
                 } else {
                     dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
                 }
             }
         }
-        return dp[len1][len2];
+        return dp[text1.length()][text2.length()];
     }
 
 
