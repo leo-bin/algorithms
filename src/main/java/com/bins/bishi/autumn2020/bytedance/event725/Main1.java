@@ -1,4 +1,4 @@
-package com.bins.bishi.autumn2020.bytedance725;
+package com.bins.bishi.autumn2020.bytedance.event725;
 
 /**
  * @author leo-bin

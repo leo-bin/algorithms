@@ -1,4 +1,4 @@
-package com.bins.bishi.autumn2020.bytedance718;
+package com.bins.bishi.autumn2020.bytedance.event718;
 
 import java.util.Scanner;
 
