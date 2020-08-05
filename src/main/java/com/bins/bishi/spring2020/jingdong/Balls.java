@@ -30,22 +30,15 @@ public class Balls {
      *
      * @apiNote 思路：
      * 1.使用等比数列的求和公式暴力求解
+     * 2.注意因为n是无穷的，所以根据公式：1-q^n的结果就是1
+     * 3.所以化简一下最后的公式
+     * 4.其实就是3*N
      */
     public static int calcDistance(int A, int B, int C, int D) {
         if (A < 0 || B < 0 || C < 0 || D < 0) {
             return 0;
         }
-        return (int) (check(A) + check(B) + check(C) + check(D));
-    }
-
-
-    /**
-     * 计算前n项
-     */
-    public static double check(int N) {
-        //n<=log2N
-        double n = (Math.log(N) / Math.log(2)) + Integer.MAX_VALUE;
-        return (3 * N * (1 - Math.pow(1.0 / 2, n)));
+        return (A + B + C + D) * 3;
     }
 
 
@@ -56,4 +49,6 @@ public class Balls {
         int D = 70;
         System.out.println(calcDistance(A, B, C, D));
     }
+
+
 }
