@@ -3,11 +3,11 @@ package com.bins.question.dp;
 /**
  * @author leo-bin
  * @date 2020/7/10 10:23
- * @apiNote 买卖股票的最佳时机 v2
+ * @apiNote 买卖股票的最佳时机Ⅱ
  * 来源：leetcode-122
  * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
  */
-public class MaxProfitV2 {
+public class MaxProfitⅡ {
 
     /**
      * 题目描述：
@@ -48,12 +48,12 @@ public class MaxProfitV2 {
      * 7.空间复杂度：O(1)
      */
     public static int maxProfit(int[] prices) {
-        int profit = 0;
+        int max = 0;
         for (int i = 1; i < prices.length; i++) {
-            int t = prices[i] - prices[i - 1];
-            profit = t > 0 ? t + profit : profit;
+            int currentProfit = prices[i] - prices[i - 1];
+            max = currentProfit > 0 ? currentProfit + max : max;
         }
-        return profit;
+        return max;
     }
 
 
@@ -73,19 +73,19 @@ public class MaxProfitV2 {
      * 10.空间复杂度：O(n*n)
      */
     public static int maxProfitV2(int[] prices) {
-        int len = prices.length;
-        int[][] dp = new int[len][2];
-        //1.初始化dp，从第一天开始
+        int[][] dp = new int[prices.length][2];
+        //第一天的收益
         dp[0][0] = 0;
+        //第一天的消费
         dp[0][1] = -prices[0];
-        //2.根据状态方程打表
-        for (int i = 1; i < len; i++) {
-            //求第i天的最大收益
+        //从第二天开始
+        for (int i = 1; i < prices.length; i++) {
+            //求此时的最大收益（卖还是不卖）
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-            //求第i天买入股票消费的最小值（因为是减法，所以这里写成了max）
+            //求此时的最小消费（买还是不买）
             dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
         }
-        return dp[len - 1][0];
+        return dp[prices.length - 1][0];
     }
 
 
