@@ -5,7 +5,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println(10 >> 1);
+        Integer integer1 = 200;
+        Integer integer2 = 200;
+        System.out.println(integer1 == integer2);
     }
 
 
