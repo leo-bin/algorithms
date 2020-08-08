@@ -1,7 +1,5 @@
 package com.bins.question.string;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -33,58 +31,20 @@ public class ReplaceString {
      * @apiNote 思路：
      * 1.
      */
-    public static int replaceString(String str) {
-        //鲁棒
-        if (!isContains(str)) {
-            return 0;
-        }
-        int count = 0;
-        StringBuilder tmp = new StringBuilder();
-        String newStr = str;
-        while (true) {
-            for (int i = 0; i < newStr.length() - 1; i++) {
-                if (("" + newStr.charAt(i) + newStr.charAt(i + 1)).equals("xy")) {
-                    tmp.append("yyx");
-                    count++;
-                    i++;
-                } else {
-                    tmp.append(newStr.charAt(i));
-                }
-            }
-            if (!isContains(tmp.toString())) {
-                break;
-            }
-            newStr = tmp.toString();
-            //清空StringBuilder
-            tmp.delete(0, tmp.length());
-        }
-        return (count % (int) (Math.pow(10, 9) + 7));
-    }
-
-
-    /**
-     * 是否包含“xy”
-     */
-    public static boolean isContains(String str) {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < str.length() - 1; i++) {
-            list.add("" + str.charAt(i) + str.charAt(i + 1));
-            if (list.contains("xy")) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public static void main(String[] args) {
-        /*String str="xxy";
-        String str1="yyx";
-        System.out.println(replaceString(str));
-        System.out.println(replaceString(str1));*/
-
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-        System.out.println(replaceString(str));
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int len = s.length();
+        int count = 0, res = 0;
+        for (int i = len - 1; i >= 0; i--) {
+            if (s.charAt(i) == 'y') {
+                count += 1;
+            }
+            if (s.charAt(i) == 'x') {
+                res = (res + count) % (1000000007);
+                count = (count * 2) % (1000000007);
+            }
+        }
+        System.out.println(res % (1000000007));
     }
 }
