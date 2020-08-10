@@ -7,7 +7,6 @@ package com.bins.question.dp;
  */
 public class RecCover {
 
-
     /**
      * 题目描述：
      * 1.我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形

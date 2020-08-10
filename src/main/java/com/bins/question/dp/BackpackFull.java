@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @apiNote 经典dp之 完全背包问题
  * 测试链接：https://www.acwing.com/problem/content/3/
  */
-public class BackPackFull {
+public class BackpackFull {
 
     /**
      * 题目描述：

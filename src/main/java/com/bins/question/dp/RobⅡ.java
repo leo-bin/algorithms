@@ -3,7 +3,7 @@ package com.bins.question.dp;
 /**
  * @author leo-bin
  * @date 2020/7/21 10:10
- * @apiNote 大家劫舍 Ⅱ
+ * @apiNote 打家劫舍 Ⅱ
  * 来源：leetcode-213
  * 链接：https://leetcode-cn.com/problems/house-robber-ii/
  */

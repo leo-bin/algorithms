@@ -7,8 +7,7 @@ package com.bins.question.dp;
  * 来源：leetcode-08.01
  * 链接：https://leetcode-cn.com/problems/three-steps-problem-lcci/
  */
-public class WaysToStep {
-
+public class JumpFloorⅢ {
 
     /**
      * 题目描述：

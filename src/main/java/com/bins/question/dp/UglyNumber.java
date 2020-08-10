@@ -1,4 +1,4 @@
-package com.bins.question.math;
+package com.bins.question.dp;
 
 /**
  * @author leo-bin
