@@ -48,7 +48,7 @@ public class Main1 {
         }
         Arrays.sort(nums);
         int min = Integer.MAX_VALUE;
-        for (int pos = nums[0]; pos <= nums[N - 1]; pos++) {
+        /*for (int pos = nums[0]; pos <= nums[N - 1]; pos++) {
             int sum = 0;
             for (int target : nums) {
                 if (pos >= target) {
@@ -58,8 +58,31 @@ public class Main1 {
                 }
             }
             min = Math.min(sum, min);
-        }
+        }*/
+        min = code(nums);
         System.out.println(min);
+    }
+
+
+    /**
+     * 解法二
+     *
+     * @apiNote 思路：
+     * 1.突然意识到这题就是一个找中位数的问题。。。
+     * 2.直接排序之后根据数组的长度判断奇偶数就行了
+     * 3.时间复杂度：O(n*(log(n)))
+     */
+    public static int code(int[] nums) {
+        int sum = 0;
+        int pos = nums.length / 2;
+        for (int target : nums) {
+            if (pos >= target) {
+                sum += pos - target;
+            } else {
+                sum += target - pos;
+            }
+        }
+        return sum;
     }
 }
 
