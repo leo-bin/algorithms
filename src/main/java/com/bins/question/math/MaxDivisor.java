@@ -7,7 +7,6 @@ package com.bins.question.math;
  */
 public class MaxDivisor {
 
-
     /**
      * 求两个数的最大公约数（解法一：辗转相除，迭代版）
      *

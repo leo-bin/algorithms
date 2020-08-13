@@ -1,14 +1,22 @@
 package com.bins;
 
 
+import java.util.HashMap;
+
 public class Main {
 
 
     public static void main(String[] args) {
-        Integer integer1 = 200;
-        Integer integer2 = 200;
-        System.out.println(integer1 == integer2);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(10, 10);
+        Object result = map.get(new Long(10));
+        if (result == null) {
+            System.out.println("没找到！");
+        } else {
+            System.out.println("找到了，value是;" + result.toString());
+        }
     }
+
 
 
 
