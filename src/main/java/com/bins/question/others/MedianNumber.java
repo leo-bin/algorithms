@@ -24,22 +24,18 @@ import java.util.PriorityQueue;
  */
 public class MedianNumber {
 
-
     /**
      * 小顶堆，存放序列中比较大的值
      */
     private static PriorityQueue<Integer> minQueue = new PriorityQueue<>();
-
     /**
      * 大顶堆，存放序列中比较小的值
      */
     private static PriorityQueue<Integer> maxQueue = new PriorityQueue<>(((o1, o2) -> o2 - o1));
-
     /**
      * 统计序列的长度
      */
     private static int count = 0;
-
 
     /**
      * @apiNote 思路：

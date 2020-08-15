@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class FindContinuousSequence {
 
-
     /**
      * 题目描述：
      * 1.小明很喜欢数学
@@ -31,7 +30,7 @@ public class FindContinuousSequence {
      */
     public static ArrayList<ArrayList<Integer>> findContinuousSequence(int sum) {
         ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
-        //1.low从1开始，high从2开始
+        //low从1开始，high从2开始
         int low = 1, high = 2;
         while (low < high) {
             int currentSum = (low + high) * (high - low + 1) / 2;

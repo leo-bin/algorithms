@@ -12,7 +12,6 @@ public class InversePairs {
 
     private static long count = 0;
 
-
     /**
      * 题目描述：
      * 1.在数组中的两个数字

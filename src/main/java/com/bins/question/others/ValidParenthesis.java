@@ -1,4 +1,4 @@
-package com.bins.question.backtrace;
+package com.bins.question.others;
 
 
 import java.util.Stack;
@@ -48,49 +48,20 @@ public class ValidParenthesis {
      * 3.空间复杂度：O(n)
      */
     public static boolean isValid(String s) {
-        //鲁棒
-        int len = s.length();
-        if (len == 0) {
-            return true;
-        }
-        if ((len & 1) == 1) {
-            return false;
-        }
         Stack<Character> stack = new Stack<>();
-        int i = 0;
-        //统计配对次数
-        int count = 0;
-        while (i < len) {
-            char current = s.charAt(i);
-            if (current == '(' || current == '[' || current == '{') {
-                stack.push(s.charAt(i));
-            } else if (current == ')' || current == ']' || current == '}') {
-                if (!stack.isEmpty()) {
-                    if (isCorrect(stack.pop(), current)) {
-                        count++;
-                    } else {
-                        return false;
-                    }
-                }
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
+            } else if (c == ']' && !stack.isEmpty() && stack.peek() == '[') {
+                stack.pop();
+            } else if (c == '}' && !stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
+            } else {
+                stack.push(c);
             }
-            i++;
         }
-        return count == len / 2;
-    }
-
-
-    /**
-     * 检查是否是一对
-     */
-    public static boolean isCorrect(char left, char right) {
-        if (left == '(' && right == ')') {
-            return true;
-        } else if (left == '[' && right == ']') {
-            return true;
-        } else if (left == '{' && right == '}') {
-            return true;
-        }
-        return false;
+        return stack.isEmpty();
     }
 
 

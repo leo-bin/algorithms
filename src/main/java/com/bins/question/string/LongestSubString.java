@@ -10,7 +10,6 @@ import java.util.HashMap;
  */
 public class LongestSubString {
 
-
     /**
      * 题目描述：
      * 1.已知一个字符串，求这个字符串中不包含重复字符的最长子串的长度

@@ -5,9 +5,8 @@ import java.util.HashMap;
 
 public class Main {
 
-
     public static void main(String[] args) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>(16);
         map.put(10, 10);
         Object result = map.get(new Long(10));
         if (result == null) {

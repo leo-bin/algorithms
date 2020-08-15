@@ -1,14 +1,14 @@
 package com.bins.question.others;
 
-import java.util.Stack;
 
 /**
  * @author leo-bin
  * @date 2020/4/22 12:14
  * @apiNote 反转整型
+ * 来源：leetcode-7
+ * 链接：https://leetcode-cn.com/problems/reverse-integer/
  */
 public class ReverseInt {
-
 
     /**
      * 题目描述：
@@ -42,19 +42,11 @@ public class ReverseInt {
         }
         //符号位
         int flag = x > 0 ? 1 : -1;
-        Stack<Character> stack = new Stack<>();
-        StringBuilder stringBuilder = new StringBuilder();
-        String str = String.valueOf(x);
-        for (int i = 0; i < str.length(); i++) {
-            //去掉符号位
-            if (str.charAt(i) != '-') {
-                stack.push(str.charAt(i));
-            }
+        StringBuilder builder = new StringBuilder(String.valueOf(x));
+        if (builder.charAt(0) == '-') {
+            builder.deleteCharAt(0);
         }
-        while (!stack.isEmpty()) {
-            stringBuilder.append(stack.pop());
-        }
-        long result = Long.parseLong(stringBuilder.toString());
+        long result = Long.parseLong(builder.reverse().toString());
         //通过和自己比较判断是否溢出
         return (int) result != result ? 0 : (int) result * flag;
     }
