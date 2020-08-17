@@ -18,12 +18,10 @@ public class GetImportance {
          * unique id of this employee
          */
         public int id;
-
         /**
          * the importance value of this employee
          */
         public int importance;
-
         /**
          * the id of direct subordinates
          */
@@ -72,6 +70,7 @@ public class GetImportance {
             }
             employeeMap.put(employee.id, employee);
         }
+        //bfs
         while (!queue.isEmpty()) {
             current = queue.poll();
             ids = current.subordinates;
