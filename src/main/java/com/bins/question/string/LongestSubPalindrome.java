@@ -4,15 +4,13 @@ package com.bins.question.string;
 /**
  * @author leo-bin
  * @date 2020/3/21 14:38
- * @apiNote 最长文字串
+ * @apiNote 最长回文子串
  * 来源：leetcode-5
  * 链接：https://leetcode-cn.com/problems/longest-palindromic-substring/
  */
 public class LongestSubPalindrome {
 
-
     /**
-     * 暴力解法
      * 题目描述：
      * 1.给定一个字符串 s
      * 2.找到 s 中最长的回文子串。
