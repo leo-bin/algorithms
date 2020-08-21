@@ -10,7 +10,6 @@ import java.util.Scanner;
  */
 public class Main2 {
 
-
     /**
      * 题目描述：
      * 小明昨晚做了一个梦。
