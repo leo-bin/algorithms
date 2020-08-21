@@ -1,19 +1,10 @@
 package com.bins;
 
 
-import java.util.HashMap;
-
 public class Main {
 
     public static void main(String[] args) {
-        HashMap<Integer, Integer> map = new HashMap<>(16);
-        map.put(10, 10);
-        Object result = map.get(new Long(10));
-        if (result == null) {
-            System.out.println("没找到！");
-        } else {
-            System.out.println("找到了，value是;" + result.toString());
-        }
+
     }
 
 
