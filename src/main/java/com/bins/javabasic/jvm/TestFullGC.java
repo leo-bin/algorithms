@@ -26,7 +26,7 @@ public class TestFullGC {
         while (true) {
             if (count == 10000) {
                 try {
-                    Thread.sleep(5000L);
+                    Thread.sleep(500L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
