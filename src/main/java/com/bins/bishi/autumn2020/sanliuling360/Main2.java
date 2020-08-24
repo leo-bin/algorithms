@@ -1,6 +1,5 @@
 package com.bins.bishi.autumn2020.sanliuling360;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
