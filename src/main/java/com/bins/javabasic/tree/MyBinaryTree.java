@@ -130,17 +130,23 @@ public class MyBinaryTree {
      * 后续遍历（非递归）
      */
     public static void postVisitV2(TreeNode node) {
-        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
         TreeNode current = node;
-        while (current != null || !stack.isEmpty()) {
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
+        stack1.push(current);
+        while (!stack1.isEmpty()) {
+            current = stack1.pop();
+            stack2.push(current);
+            if (current.left != null) {
+                stack1.push(current.left);
             }
-            if (!stack.isEmpty()) {
-                current = stack.pop();
-                current = current.right;
+            if (current.right != null) {
+                stack1.push(current.right);
             }
+        }
+        //stack2的遍历顺序就是后序遍历的结果
+        while (!stack2.isEmpty()) {
+            System.out.print(stack2.pop() + " ");
         }
     }
 
