@@ -7,6 +7,6 @@ package com.bins.javabasic.jvm;
  */
 public class BigObject {
 
-    private int size = 64;
+    private int size = 32;
     private String[] padding = new String[size];
 }
