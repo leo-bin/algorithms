@@ -43,7 +43,6 @@ public class FindCheapestPrice {
      * @apiNote 思路：
      * 1.dfs+回溯思想
      */
-
     private static int minPrices = Integer.MAX_VALUE;
     public static int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         //建立邻接图
@@ -55,7 +54,6 @@ public class FindCheapestPrice {
         dfs(n, graph, src, dst, 0, K, 0, marked);
         return minPrices == Integer.MAX_VALUE ? -1 : minPrices;
     }
-
     /**
      * dfs
      */
