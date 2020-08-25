@@ -55,6 +55,8 @@ public class GroupAnagrams {
      *
      * @apiNote 思路：
      * 1.自定义hash规则
+     * 2.时间复杂度：(n*m)
+     * 3.空间复杂度：(n*m)
      */
     public static List<List<String>> groupAnagramsV2(String[] strs) {
         //使用一个从小到大质数序列分别代表26哥英文字母
