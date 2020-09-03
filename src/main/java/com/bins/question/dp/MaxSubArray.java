@@ -6,9 +6,10 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/3/21 16:30
  * @apiNote 最大的子序列之和
+ * 来源：剑指offer-42
+ * 链接：https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/
  */
 public class MaxSubArray {
-
 
     /**
      * 题目描述：
@@ -31,22 +32,19 @@ public class MaxSubArray {
      * 7.空间复杂度：O(n)
      */
     public static int maxSubArray(int[] nums) {
-        int len = nums.length;
-        //鲁棒
-        if (len == 0) {
+        //特判
+        if (nums.length <= 0) {
             return 0;
         }
-        //最大子序列的和
-        int max = 0;
-        //1.dp数组
-        int[] dp = new int[len];
-        //2.初始化dp数组
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int[] dp = new int[nums.length];
         dp[0] = nums[0];
-        for (int i = 1; i < len; i++) {
-            //3.取最大值最为dp中的数据
-            dp[i] = Math.max((dp[i - 1] + nums[i]), nums[i]);
-            //保存最大值
-            max = Math.max(dp[i], max);
+        int max = dp[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            max = Math.max(max, dp[i]);
         }
         return max;
     }
