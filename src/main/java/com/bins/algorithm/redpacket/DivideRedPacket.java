@@ -26,7 +26,7 @@ public class DivideRedPacket {
      * 1.我们首先就能想到这道题本质上就是一个分配问题！
      * 2.那我们如何分配才能保证绝对的公平呢？一个解决方案就是随机数！
      * 3.在Java中，jdk为我们提供了一个很方便的随机数生成api，那就是Random
-     * 4.Random.nextInt(a)表示返回一个从0到a的随机int数
+     * 4.Random7.nextInt(a)表示返回一个从0到a的随机int数
      * 5.也就是说，我们只要确定这个a，那么红包的金额也就迎刃而解了！
      * 6.但是我们如何确定这个a呢？一种非常直白的做法就是，a=[0.01，剩余金额-0.01]
      * 7.也就是说，假设红包金额是100，5个人抢，第一个人的随机范围就是：[0.01,99.99]
@@ -73,7 +73,7 @@ public class DivideRedPacket {
      * @return double
      * @apiNote 思路：
      * 1.如果要生成[start,end) 的随机数
-     * 2.可以这么写：int random = start + ( Math.Random() * (end - start ))
+     * 2.可以这么写：int random = start + ( Math.Random7() * (end - start ))
      */
     private static double getRandomMoney(double restMoney, int restPeople, int scale) {
         double random = 0.01 + Math.random() * (restMoney / restPeople * 2 - 0.01);
