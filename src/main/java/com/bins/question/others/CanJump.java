@@ -74,14 +74,14 @@ public class CanJump {
      */
     public static boolean canJumpV2(int[] nums) {
         //能够走的最远距离
-        int s = 0;
+        int maxDistance = 0;
         for (int curIndex = 0; curIndex < nums.length; curIndex++) {
             //如果当前能够跳的最远距离无法到达当前位置，那就跳不到了
-            if (s < curIndex) {
+            if (maxDistance < curIndex) {
                 return false;
             }
             //更新当前能够跳的最远距离
-            s = Math.max(s, curIndex + nums[curIndex]);
+            maxDistance = Math.max(maxDistance, curIndex + nums[curIndex]);
         }
         return true;
     }
