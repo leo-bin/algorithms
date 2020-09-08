@@ -7,7 +7,7 @@ package com.bins.question.backtrace;
  * 来源：leetcode-79
  * 链接：https://leetcode-cn.com/problems/word-search/
  */
-public class Exist {
+public class WordSearch {
 
     /**
      * 题目描述：
