@@ -1,6 +1,6 @@
-package com.bins.bishi.zuiyou;
+package com.bins.bishi.autumn2020.zuiyou;
 
-import java.util.Scanner;
+import java.math.BigInteger;
 
 /**
  * @author leo-bin
@@ -56,16 +56,53 @@ public class Main1 {
      * 不符合要求的输入输出0
      *
      * @apiNote 思路：
-     * 1.
+     * 1.调用api实现36进制转10进制
      */
     public static long code(String s) {
+        try {
+            BigInteger integer = new BigInteger(s, 36);
+            return Long.parseLong(integer.toString(10));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
 
-        return 0;
+    /**
+     * 手写
+     *
+     * @apiNote 思路：
+     * 1.直接算呗
+     */
+    public static long code2(String s) {
+        //特判
+        if (s.length() <= 0) {
+            return 0;
+        }
+        //考虑负数
+        int flag = 1;
+        if (s.charAt(0) == '-') {
+            flag = -1;
+        }
+        //构造36进制表
+        int[] words = new int[150];
+        for (int i = 0, a = 0; i <= 9; i++, a++) {
+            words[i] = a;
+        }
+        for (int i = 97, a = 10; i <= 122; i++, a++) {
+            words[i] = a;
+        }
+        long result = 0;
+        //负数的话首位不需要参与计算
+        int limit = flag == 1 ? -1 : 0;
+        for (int i = 0, j = s.length() - 1; i < s.length() && j > limit; i++, j--) {
+            result += Math.pow(36, i) * words[s.charAt(j)];
+        }
+        return result * flag;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
+        String s = "-sgsf";
         System.out.println(code(s));
+        System.out.println(code2(s));
     }
 }

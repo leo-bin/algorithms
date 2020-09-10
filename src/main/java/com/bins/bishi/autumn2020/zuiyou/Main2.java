@@ -1,4 +1,4 @@
-package com.bins.bishi.zuiyou;
+package com.bins.bishi.autumn2020.zuiyou;
 
 import java.util.Scanner;
 
