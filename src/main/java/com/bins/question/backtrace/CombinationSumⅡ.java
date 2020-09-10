@@ -48,6 +48,7 @@ public class CombinationSumⅡ {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         LinkedList<Integer> track = new LinkedList<>();
+        //通过排序来去重
         Arrays.sort(candidates);
         backtrace(result, candidates, target, 0, track, 0);
         return result;

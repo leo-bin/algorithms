@@ -1,10 +1,11 @@
 package com.bins.question.backtrace;
 
-
 /**
  * @author leo-bin
  * @date 2020/8/18 17:37
- * @apiNote
+ * @apiNote K站中转内最便宜的航班
+ * 来源：leetcode-787
+ * 链接：https://leetcode-cn.com/problems/cheapest-flights-within-k-stops/
  */
 public class FindCheapestPrice {
 
@@ -41,9 +42,10 @@ public class FindCheapestPrice {
      * 航班没有重复，且不存在环路
      *
      * @apiNote 思路：
-     * 1.dfs+回溯思想
+     * 1.邻接图+dfs
      */
     private static int minPrices = Integer.MAX_VALUE;
+
     public static int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         //建立邻接图
         int[][] graph = new int[n][n];
@@ -54,6 +56,7 @@ public class FindCheapestPrice {
         dfs(n, graph, src, dst, 0, K, 0, marked);
         return minPrices == Integer.MAX_VALUE ? -1 : minPrices;
     }
+
     /**
      * dfs
      */
