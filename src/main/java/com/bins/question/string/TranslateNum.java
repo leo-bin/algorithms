@@ -9,7 +9,6 @@ package com.bins.question.string;
  */
 public class TranslateNum {
 
-
     /**
      * 题目描述：
      * 1.给定一个数字，我们按照如下规则把它翻译为字符串
@@ -41,7 +40,7 @@ public class TranslateNum {
      * 15.空间复杂度：O(n)
      */
     public static int translateNum(int num) {
-        //1.递归结束条件
+        //1.递归结束条件：0-9内的数字就是一种可能
         if (num <= 9) {
             return 1;
         }
@@ -49,8 +48,10 @@ public class TranslateNum {
         int a = num % 100;
         //3.选择递归条件
         if (a <= 9 || a >= 26) {
+            //一个一个拆分：58-->5和8
             return translateNum(num / 10);
         } else {
+            //既可以拆成一个也可以拆成两个：26-->2,6和26
             return translateNum(num / 10) + translateNum(num / 100);
         }
     }
