@@ -32,12 +32,12 @@ public class WordSearch {
      * 2.注意这里通过迭代每一个元素，保证每一个元素都能进行dfs搜索
      */
     public static boolean exist(char[][] board, String word) {
-        boolean[][] flag = new boolean[board.length][board[0].length];
+        boolean[][] marked = new boolean[board.length][board[0].length];
         char[] words = word.toCharArray();
         //保证每一个元素都能被搜索到
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (search(board, words, 0, i, j, flag)) {
+                if (dfs(board, words, 0, i, j, marked)) {
                     return true;
                 }
             }
@@ -48,26 +48,26 @@ public class WordSearch {
     /**
      * 回溯
      */
-    public static boolean search(char[][] board, char[] word, int currentIndex, int i, int j, boolean[][] flag) {
+    public static boolean dfs(char[][] board, char[] words, int currentIndex, int i, int j, boolean[][] marked) {
         //递归结束条件
-        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || flag[i][j]) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || marked[i][j]) {
             return false;
         }
-        if (board[i][j] != word[currentIndex]) {
+        if (board[i][j] != words[currentIndex]) {
             return false;
         }
-        if (currentIndex == word.length - 1) {
+        if (currentIndex == words.length - 1) {
             return true;
         }
-        flag[i][j] = true;
+        marked[i][j] = true;
         //上下左右分别递归
-        if (search(board, word, currentIndex + 1, i + 1, j, flag)
-                || search(board, word, currentIndex + 1, i - 1, j, flag)
-                || search(board, word, currentIndex + 1, i, j + 1, flag)
-                || search(board, word, currentIndex + 1, i, j - 1, flag)) {
+        if (dfs(board, words, currentIndex + 1, i + 1, j, marked)
+                || dfs(board, words, currentIndex + 1, i - 1, j, marked)
+                || dfs(board, words, currentIndex + 1, i, j + 1, marked)
+                || dfs(board, words, currentIndex + 1, i, j - 1, marked)) {
             return true;
         }
-        flag[i][j] = false;
+        marked[i][j] = false;
         return false;
     }
 
