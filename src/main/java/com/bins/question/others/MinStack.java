@@ -62,7 +62,6 @@ public class MinStack {
         secondStack = new Stack<>();
     }
 
-
     public void push(int x) {
         mainStack.push(x);
         //如果当前的x比最小值要小那就存入辅助栈并更新最小值
@@ -73,7 +72,6 @@ public class MinStack {
             secondStack.push(minElement);
         }
     }
-
 
     public void pop() {
         if (!mainStack.isEmpty()) {
@@ -87,6 +85,15 @@ public class MinStack {
         }
     }
 
+    /**
+     * top
+     */
+    public int top() {
+        if (!mainStack.isEmpty()) {
+            return mainStack.peek();
+        }
+        throw new RuntimeException("栈中元素为空，此操作非法！");
+    }
 
     public int getMin() {
         return minElement;

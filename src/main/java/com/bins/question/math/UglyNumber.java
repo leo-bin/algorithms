@@ -1,4 +1,4 @@
-package com.bins.question.dp;
+package com.bins.question.math;
 
 /**
  * @author leo-bin
@@ -6,7 +6,6 @@ package com.bins.question.dp;
  * @apiNote 丑数
  */
 public class UglyNumber {
-
 
     /**
      * 题目描述：
