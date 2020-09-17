@@ -7,7 +7,7 @@ package com.bins.question.string;
  * 来源：leetcode-557
  * 链接：https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/comments/
  */
-public class ReverseWords {
+public class ReverseWordsⅠ {
 
     /**
      * 题目描述：

@@ -1,15 +1,14 @@
 package com.bins.question.string;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author leo-bin
  * @date 2020/4/17 20:17
  * @apiNote 左旋转字符
+ * 来源：剑指offer-58-Ⅱ
+ * 链接：https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/
  */
 public class LeftRotateString {
-
 
     /**
      * 题目描述：
@@ -22,47 +21,36 @@ public class LeftRotateString {
      * @apiNote 思路：
      * 1.暴力
      */
-    public static String leftRotateString(String str, int n) {
-        int len = str.length();
-        //鲁棒
-        if (len == 0 || len == 1 || len == n) {
-            return str;
+    public static String leftRotateString(String s, int n) {
+        //特判
+        if (s.length() <= 1 || s.length() == n) {
+            return s;
         }
-        List<Character> list = new ArrayList<>();
-        for (int i = 0; i < len; i++) {
-            list.add(str.charAt(i));
+        StringBuilder builder = new StringBuilder();
+        for (int i = n; i < s.length(); i++) {
+            builder.append(s.charAt(i));
         }
-        for (int j = 0; j < n; j++) {
-            list.add(list.get(0));
-            list.remove(0);
+        for (int i = 0; i < n; i++) {
+            builder.append(s.charAt(i));
         }
-        return list.toString().
-                replaceAll(",", "").
-                replace("[", "").
-                replace("]", "").
-                replaceAll(" ", "");
+        return builder.toString();
     }
 
 
     /**
      * 解法二，字符串拼接
      */
-    public static String leftRotateStringV2(String str, int n) {
-        int len = str.length();
-        //鲁棒
-        if (len == 0 || len == 1 || len == n) {
-            return str;
+    public static String leftRotateStringV2(String s, int n) {
+        //特判
+        if (s.length() <= 1 || s.length() == n) {
+            return s;
         }
-        String s1 = str.substring(0, n);
-        String s2 = str.substring(n);
-        return s2 + s1;
+        return s.substring(n) + s.substring(0, n);
     }
-
 
     public static void main(String[] args) {
         String str = "abcXYZdef";
         System.out.println(leftRotateString(str, 3));
         System.out.println(leftRotateStringV2(str, 3));
     }
-
 }

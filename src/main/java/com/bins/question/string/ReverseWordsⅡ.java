@@ -4,11 +4,13 @@ import java.util.Stack;
 
 /**
  * @author leo-bin
- * @date 2020/4/24 11:41
- * @apiNote 反转句子
+ * @date 2020/9/17 10:30
+ * @apiNote 反转单词 Ⅱ
+ * 来源：leetcode-151，剑指offer-58-Ⅰ
+ * 链接：https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/
+ * 链接：https://leetcode-cn.com/problems/reverse-words-in-a-string/
  */
-public class ReverseSentence {
-
+public class ReverseWordsⅡ {
 
     /**
      * 题目描述：
@@ -17,6 +19,25 @@ public class ReverseSentence {
      * 3.例如，“student. a am I”
      * 4.后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”
      * 5.Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？
+     * <p>
+     * 示例 1：
+     * 输入: "the sky is blue"
+     * 输出: "blue is sky the"
+     * <p>
+     * 示例 2：
+     * 输入: "  hello world!  "
+     * 输出: "world! hello"
+     * 解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+     * <p>
+     * 示例 3：
+     * 输入: "a good   example"
+     * 输出: "example good a"
+     * 解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+     * <p>
+     * 说明：
+     * 无空格字符构成一个单词。
+     * 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+     * 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个
      *
      * @apiNote 思路：
      * 1.使用栈来保存所有的单词
@@ -24,18 +45,16 @@ public class ReverseSentence {
      * 3.时间复杂度：O(n)
      * 4.空间复杂度：O(n)
      */
-    public static String reverserSentence(String str) {
-        //鲁棒
-        if (str.length() <= 1 || "".equals(str.trim())) {
-            return str;
-        }
+    public static String reverserSentence(String s) {
         StringBuilder result = new StringBuilder();
         Stack<String> stack = new Stack<>();
         //1.以空格分割成单词数组
-        String[] words = str.split(" ");
+        String[] words = s.split(" ");
         //2.每一个单词按照顺序进栈
         for (String word : words) {
-            stack.push(word);
+            if (!word.equals("")) {
+                stack.push(word);
+            }
         }
         //3.再次出栈就反序了
         while (!stack.isEmpty()) {
@@ -43,7 +62,6 @@ public class ReverseSentence {
         }
         return result.toString().trim();
     }
-
 
     /**
      * 解法二
@@ -92,15 +110,18 @@ public class ReverseSentence {
         }
     }
 
-
     public static void main(String[] args) {
         String str = "student. a am I";
         String str1 = " ";
         String str2 = "";
         String str3 = "   ";
+        String str4 = "  hello world!  ";
+        String str5 = "a good   example";
         System.out.println(reverserSentence(str));
         System.out.println(reverserSentence(str1));
         System.out.println(reverserSentence(str2));
         System.out.println(reverserSentence(str3));
+        System.out.println(reverserSentence(str4));
+        System.out.println(reverserSentence(str5));
     }
 }

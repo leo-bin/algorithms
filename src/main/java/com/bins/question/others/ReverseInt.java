@@ -62,10 +62,6 @@ public class ReverseInt {
      * 4.空间复杂度：O(1)
      */
     public static int reverseIntV2(int x) {
-        //鲁棒
-        if (x == 0) {
-            return x;
-        }
         long result = 0;
         while (x != 0) {
             //得到最后一位，然后*10

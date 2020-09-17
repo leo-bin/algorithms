@@ -1,4 +1,4 @@
-package com.bins.question.others;
+package com.bins.question.graph;
 
 import java.util.*;
 
