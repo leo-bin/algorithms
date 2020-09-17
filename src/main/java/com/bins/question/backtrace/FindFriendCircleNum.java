@@ -1,4 +1,4 @@
-package com.bins.question.graph;
+package com.bins.question.backtrace;
 
 /**
  * @author leo-bin
@@ -25,8 +25,8 @@ public class FindFriendCircleNum {
      * [1,1,0],
      * [0,0,1]]
      * 输出：2
-     * 解释：已知学生 0 和学生 1 互为朋友，他们在一个朋友圈。
-     * 第2个学生自己在一个朋友圈。所以返回 2 。
+     * 解释：已知学生 0 和学生 1 互为朋友，他们在一个朋友圈
+     * 第2个学生自己在一个朋友圈。所以返回 2
      * <p>
      * 示例 2：
      * 输入：
@@ -35,7 +35,7 @@ public class FindFriendCircleNum {
      * [0,1,1]]
      * 输出：1
      * 解释：已知学生 0 和学生 1 互为朋友，学生 1 和学生 2 互为朋友
-     * 所以学生 0 和学生 2 也是朋友，所以他们三个在一个朋友圈，返回 1 。
+     * 所以学生 0 和学生 2 也是朋友，所以他们三个在一个朋友圈，返回 1
      * <p>
      * 提示：
      * 1 <= N <= 200
@@ -43,14 +43,35 @@ public class FindFriendCircleNum {
      * M[i][j] == M[j][i]
      *
      * @apiNote 思路：
-     * 1.
+     * 1.dfs深搜就行
      */
     public static int findFriendCircleNum(int[][] M) {
+        boolean[] marked = new boolean[M.length];
+        int count = 0;
+        for (int i = 0; i < marked.length; i++) {
+            if (!marked[i]) {
+                count++;
+                dfs(M, i, marked);
+            }
+        }
+        return count;
+    }
 
-        return 0;
+    /**
+     * dfs
+     */
+    public static void dfs(int[][] M, int i, boolean[] marked) {
+        for (int j = 0; j < M.length; j++) {
+            if (M[i][j] == 1 && !marked[j]) {
+                marked[j] = true;
+                //接着找当前这个人和其他人的关系
+                dfs(M, j, marked);
+            }
+        }
     }
 
     public static void main(String[] args) {
-
+        int[][] M = {{1, 1, 0}, {1, 1, 1}, {0, 1, 1}};
+        System.out.println(findFriendCircleNum(M));
     }
 }
