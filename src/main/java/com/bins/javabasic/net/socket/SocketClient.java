@@ -12,11 +12,9 @@ import java.net.Socket;
  */
 public class SocketClient {
 
-
     public static void main(String[] args) {
         String host = "127.0.0.1";
         int port = 9999;
-
         try (Socket client = new Socket(host, port);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
              ObjectInputStream objectInputStream = new ObjectInputStream(client.getInputStream())) {

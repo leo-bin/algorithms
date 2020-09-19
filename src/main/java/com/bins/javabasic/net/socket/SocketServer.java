@@ -14,11 +14,9 @@ import java.net.Socket;
  */
 public class SocketServer {
 
-
     public static void main(String[] args) {
         String host = "127.0.0.1";
         int port = 9999;
-
         try (ServerSocket server = new ServerSocket()) {
             //1.绑定指定主机和端口并监听
             server.bind(new InetSocketAddress(host, port));

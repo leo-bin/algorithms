@@ -1,23 +1,12 @@
 package com.bins;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
 
-    public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>(16);
-        try {
-            map.put("123", "123");
-            int a = 2;
-            System.out.println(a / 0);
-        } catch (ArithmeticException e) {
-            System.out.println("捕捉到了unchecked 异常");
-            e.printStackTrace();
-        }
-    }
 
+    public static void main(String[] args) {
+
+    }
 
 
 
