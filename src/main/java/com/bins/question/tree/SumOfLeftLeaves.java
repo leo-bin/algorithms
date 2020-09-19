@@ -63,7 +63,6 @@ public class SumOfLeftLeaves {
         return sumHelper(root.left, 0) + sumHelper(root.right, 1);
     }
 
-
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         TreeNode node1 = new TreeNode(9);
