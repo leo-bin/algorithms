@@ -35,7 +35,7 @@ public class SubSets {
      *
      * @apiNote 思路：
      * 1.暴力回溯+剪枝+去重
-     * 2.这题和之前写的思路基本一样，直接回溯干完事了。
+     * 2.这题和之前写的思路基本一样，直接回溯干完事了
      */
     public static List<List<Integer>> subSets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -57,7 +57,6 @@ public class SubSets {
             track.removeLast();
         }
     }
-
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
