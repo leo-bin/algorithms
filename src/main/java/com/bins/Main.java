@@ -5,7 +5,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        char b = 450;
+        Integer a = new Integer(b);
+        System.out.println(a == b);
     }
 
 
