@@ -25,8 +25,6 @@ public class ProducerAndConsumerV1<T> {
      * 下一个要放进数组的位置
      */
     private int putIndex;
-
-
     /**
      * 唯一一把锁负责所有线程的安全
      */
@@ -61,7 +59,7 @@ public class ProducerAndConsumerV1<T> {
         final ReentrantLock lock = this.lock;
         lock.lock();
         try {
-            //如果没有那就等待呗
+            //如果没有那就原地等待呗
             while (count == 0) {
                 notEmpty.await();
             }

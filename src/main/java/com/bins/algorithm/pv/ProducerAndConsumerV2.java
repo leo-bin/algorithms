@@ -59,7 +59,6 @@ public class ProducerAndConsumerV2<T> {
         last = head = new Node<>(null);
     }
 
-
     /**
      * take操作，阻塞操作，如果拿不到就阻塞
      */
