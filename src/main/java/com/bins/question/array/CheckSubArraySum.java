@@ -47,7 +47,6 @@ public class CheckSubArraySum {
         int preSum = 0;
         for (int i = 0; i < nums.length; i++) {
             preSum += nums[i];
-            //
             preSum = (k != 0) ? (preSum % k) : preSum;
             if (map.containsKey(preSum)) {
                 //保证连续

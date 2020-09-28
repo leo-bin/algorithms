@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 来源：leetcode-48
  * 链接：https://leetcode-cn.com/problems/rotate-image/
  */
-public class Rotate {
+public class RotateⅠ {
 
     /**
      * 题目描述：

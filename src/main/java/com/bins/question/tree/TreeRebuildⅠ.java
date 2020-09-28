@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 来源：leetcode-105
  * 链接：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
-public class TreeRebuild {
+public class TreeRebuildⅠ {
 
     /**
      * 二叉树节点
@@ -29,7 +29,8 @@ public class TreeRebuild {
      * 题目描述：重构二叉树
      * 1.输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
      * 2.假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
-     * 3.例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
+     * 3.例如输入前序遍历序列{1,2,4,7,3,5,6,8}和
+     * 4.中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回
      *
      * @apiNote 思路：
      * 1.使用递归解决
@@ -44,8 +45,8 @@ public class TreeRebuild {
         if (preOrder.length == 0) {
             return null;
         }
-        int root = preOrder[0];
-        TreeNode rootNode = new TreeNode(root);
+        int rootValue = preOrder[0];
+        TreeNode rootNode = new TreeNode(rootValue);
         //1.递归结束条件
         if (preOrder.length == 1) {
             return rootNode;
@@ -53,7 +54,7 @@ public class TreeRebuild {
         //2.根据根节点的值去中序中找root节点所在的位置
         int rootIndex = 0;
         for (int i = 0; i < inOrder.length; i++) {
-            if (root == inOrder[i]) {
+            if (rootValue == inOrder[i]) {
                 rootIndex = i;
                 break;
             }
