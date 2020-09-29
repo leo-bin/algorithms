@@ -8,10 +8,9 @@ import java.util.Queue;
 /**
  * @author leo-bin
  * @date 2020/4/12 16:27
- * @apiNote 从上到下打印二叉树
+ * @apiNote 二叉树的层次遍历
  */
 public class TreePrint {
-
 
     /**
      * 二叉树节点
@@ -51,20 +50,17 @@ public class TreePrint {
         if (root == null) {
             return lists;
         }
-        int count;
-        int width;
         TreeNode current;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
-            count = 0;
-            List<Integer> currentList = new ArrayList<>();
-            width = queue.size();
-            while (count < width) {
+            int count = queue.size();
+            List<Integer> list = new ArrayList<>();
+            while (count-- > 0) {
                 current = queue.poll();
                 if (current != null) {
                     //存放每一层中的节点
-                    currentList.add(current.data);
+                    list.add(current.data);
                     if (current.left != null) {
                         queue.offer(current.left);
                     }
@@ -72,43 +68,10 @@ public class TreePrint {
                         queue.offer(current.right);
                     }
                 }
-                count++;
             }
-            lists.add(currentList);
+            lists.add(list);
         }
         return lists;
-    }
-
-
-    /**
-     * 题目描述：
-     * 1.从上往下打印出二叉树的每个节点
-     * 2.同层节点从左至右打印
-     *
-     * @apiNote 思路：
-     * 1.层次遍历BFS
-     */
-    public static ArrayList<Integer> printFromTopToBottom(TreeNode root) {
-        ArrayList<Integer> list = new ArrayList<>();
-        if (root == null) {
-            return list;
-        }
-        TreeNode current;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            current = queue.poll();
-            if (current != null) {
-                list.add(current.data);
-                if (current.left != null) {
-                    queue.offer(current.left);
-                }
-                if (current.right != null) {
-                    queue.offer(current.right);
-                }
-            }
-        }
-        return list;
     }
 
 
@@ -127,8 +90,5 @@ public class TreePrint {
         if (lists != null && lists.size() > 0) {
             System.out.println(lists.toString());
         }
-        System.out.println("剑指offer：");
-        ArrayList<Integer> arrayList = printFromTopToBottom(root);
-        System.out.println(arrayList.toString());
     }
 }

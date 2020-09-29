@@ -9,7 +9,6 @@ import java.util.Arrays;
  */
 public class BinaryHeap {
 
-
     /**
      * 构建一个二叉堆
      *
