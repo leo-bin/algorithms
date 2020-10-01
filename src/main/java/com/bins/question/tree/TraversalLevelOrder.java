@@ -12,7 +12,7 @@ import java.util.Queue;
  * 来源：leetcode-102
  * 链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
  */
-public class LevelOrder {
+public class TraversalLevelOrder {
 
     /**
      * 二叉树节点
