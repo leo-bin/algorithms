@@ -9,9 +9,10 @@ import java.util.List;
  * @author leo-bin
  * @date 2020/3/23 16:36
  * @apiNote 三个元素之和
+ * 来源：leetcode-15
+ * 链接：https://leetcode-cn.com/problems/3sum/
  */
 public class ThreeSum {
-
 
     /**
      * 题目描述：
@@ -56,14 +57,13 @@ public class ThreeSum {
                 if (a == (nums[left] + nums[right])) {
                     List<Integer> tmp = new ArrayList<>();
                     tmp.add(-a);
-                    tmp.add(nums[left]);
-                    tmp.add(nums[right]);
+                    tmp.add(nums[left++]);
+                    tmp.add(nums[right--]);
+                    //去重
                     if (!set.contains(tmp)) {
                         set.add(tmp);
                         result.add(tmp);
                     }
-                    left++;
-                    right--;
                 } else if (a > (nums[left] + nums[right])) {
                     left++;
                 } else {
@@ -73,7 +73,6 @@ public class ThreeSum {
         }
         return result;
     }
-
 
 
     public static void main(String[] args) {
