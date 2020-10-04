@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class BinaryHeap {
 
     /**
-     * 构建一个二叉堆
+     * 构建一个二叉堆（小顶堆）
      *
      * @apiNote 思路：
      * 1.因为leftChildIndex=2*parentIndex+1,所以parentIndex=（leftChildIndex-1）/2
@@ -107,10 +107,10 @@ public class BinaryHeap {
         buildHeap(nums);
         System.out.println("构建的二叉堆的序列是：" + Arrays.toString(nums));
 
-        //使用构建好的一个二叉堆的数组的末尾随机加上一个元素来模拟插入一个元素
+/*        //使用构建好的一个二叉堆的数组的末尾随机加上一个元素来模拟插入一个元素
         int[] nums2 = {1, 3, 2, 4, 7, 6, 8, 5, 9, 0};
         System.out.println("原来的二叉堆的序列为：" + Arrays.toString(nums2));
         upAdjust(nums2);
-        System.out.println("新增一个元素0，现在的二叉堆的序列为;" + Arrays.toString(nums2));
+        System.out.println("新增一个元素0，现在的二叉堆的序列为;" + Arrays.toString(nums2));*/
     }
 }

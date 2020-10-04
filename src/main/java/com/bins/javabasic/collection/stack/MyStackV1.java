@@ -22,19 +22,14 @@ public class MyStackV1 {
      * 使用数组存储所有的元素
      */
     private Integer[] elementData;
-
-
     /**
      * 统计数组中存在的元素个数
      */
     private int count;
-
     /**
      * 栈的容量
      */
     private int capacity;
-
-
     /**
      * 默认的数组大小
      */

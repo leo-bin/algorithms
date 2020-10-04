@@ -86,8 +86,8 @@ public class MyList<E> {
         //1.5倍
         int newCapacity = oldCapacity + (oldCapacity >> 1);
         //确保不超过最大数组分配长度
-        if (newCapacity < MAX_ARRAY_LENGTH) {
-            throw new IllegalArgumentException("已经达到数组的最大分配长度!" + MAX_ARRAY_LENGTH);
+        if (newCapacity - MAX_ARRAY_LENGTH > 0) {
+            newCapacity = MAX_ARRAY_LENGTH;
         }
         elements = Arrays.copyOf(elements, newCapacity);
     }
