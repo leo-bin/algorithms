@@ -1,12 +1,17 @@
 package com.bins;
 
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
-        char b = 450;
-        Integer a = new Integer(b);
-        System.out.println(a == b);
+        int[] nums = {1, 2, 3, 4, 5};
+        int srcPos = 2;
+        int desPos = 2;
+        System.arraycopy(nums, srcPos + 1, nums, desPos, 2);
+        nums[nums.length - 1] = -1;
+        System.out.println(Arrays.toString(nums));
     }
 
 
