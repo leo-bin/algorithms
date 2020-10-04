@@ -113,7 +113,7 @@ public class CheckSubArraySum {
             sum += nums[i];
             preSum[i + 1] = sum;
         }
-        //2.求所有区间相差2个位置或以上的前缀和只差
+        //2.求所有区间相差2个位置或以上的前缀和之差
         for (int i = 0; i < preSum.length; i++) {
             for (int j = i + 2; j < preSum.length; j++) {
                 int t = preSum[j] - preSum[i];

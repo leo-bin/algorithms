@@ -79,6 +79,31 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
+        ListNode head1 = new ListNode(1);
+        ListNode node11 = new ListNode(3);
+        ListNode node12 = new ListNode(4);
+        ListNode node13 = new ListNode(5);
+        ListNode node14 = new ListNode(6);
+        head1.next = node11;
+        node11.next = node12;
+        node12.next = node13;
+        node13.next = node14;
 
+        ListNode head2 = new ListNode(2);
+        ListNode node21 = new ListNode(2);
+        ListNode node22 = new ListNode(2);
+        ListNode node23 = new ListNode(2);
+        ListNode node24 = new ListNode(2);
+        head2.next = node21;
+        node21.next = node22;
+        node22.next = node23;
+        node23.next = node24;
+
+        ListNode result = addTwoNumbers(head1, head2);
+        System.out.println("13456+22222=");
+        while (result != null) {
+            System.out.print(result.data + "->");
+            result = result.next;
+        }
     }
 }
