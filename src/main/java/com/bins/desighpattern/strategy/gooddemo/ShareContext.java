@@ -12,12 +12,10 @@ public class ShareContext {
      * 具体的策略名
      */
     private String type;
-
     /**
      * 具体分享策略实例
      */
     private ShareStrategy shareStrategy;
-
 
     public ShareContext(String type, ShareStrategy shareStrategy) {
         this.type = type;
@@ -36,5 +34,9 @@ public class ShareContext {
      */
     public boolean options(String type) {
         return this.type.equals(type);
+    }
+
+    public void doShare() {
+        shareStrategy.share();
     }
 }

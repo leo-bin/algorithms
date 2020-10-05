@@ -8,7 +8,7 @@ package com.bins.desighpattern.strategy.gooddemo;
 public class ShareFriends implements ShareStrategy {
 
     @Override
-    public void share(String option) {
-        System.out.println("分享至朋友圈。。。");
+    public void share() {
+        System.out.println("正在分享至朋友圈。。。");
     }
 }

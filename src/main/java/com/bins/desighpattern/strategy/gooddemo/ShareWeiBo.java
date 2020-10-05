@@ -8,7 +8,7 @@ package com.bins.desighpattern.strategy.gooddemo;
 public class ShareWeiBo implements ShareStrategy {
 
     @Override
-    public void share(String option) {
-        System.out.println("分享至微博。。。");
+    public void share() {
+        System.out.println("正在分享至微博。。。");
     }
 }

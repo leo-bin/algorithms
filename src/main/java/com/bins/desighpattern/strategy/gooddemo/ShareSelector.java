@@ -7,8 +7,7 @@ import java.util.HashMap;
  * @date 2020/4/27 20:27
  * @apiNote 通过策略模式重构之后的代码
  */
-public class ShareUtil {
-
+public class ShareSelector {
 
     /**
      * 存放所有策略的上下文
@@ -35,14 +34,10 @@ public class ShareUtil {
      *
      * @param shareType 分享类型
      */
-    public static void shareOptions(String shareType) {
+    public static void select(String shareType) {
         ShareContext shareContext = shareContexts.get(shareType);
-        ShareStrategy shareStrategy;
         if (shareContext != null) {
-            if (shareContext.options(shareType)) {
-                shareStrategy = shareContext.getShareStrategy();
-                shareStrategy.share(shareType);
-            }
+            shareContext.doShare();
         } else {
             System.out.println("暂时没有此分享类型：" + shareType);
         }

@@ -9,8 +9,6 @@ public interface ShareStrategy {
 
     /**
      * 分享的统一处理方法
-     *
-     * @param option 选择
      */
-    void share(String option);
+    void share();
 }

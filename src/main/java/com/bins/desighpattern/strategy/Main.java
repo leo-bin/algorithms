@@ -1,6 +1,6 @@
 package com.bins.desighpattern.strategy;
 
-import com.bins.desighpattern.strategy.gooddemo.ShareUtil;
+import com.bins.desighpattern.strategy.gooddemo.ShareSelector;
 
 /**
  * @author leo-bin
@@ -8,7 +8,6 @@ import com.bins.desighpattern.strategy.gooddemo.ShareUtil;
  * @apiNote 多重if else 嵌套选择的重构案例
  */
 public class Main {
-
 
     /**
      * 页面分享跳转方法
@@ -20,31 +19,32 @@ public class Main {
      * 4.最后就会导致系统的可维护性变差，代码可读性，健壮性变弱
      */
     public static void shareServiceDemo1(String option) {
-        if (option.equals("微博")) {
-            System.out.println("跳转到微博页面。。。");
+        if (option.equals("WeiBo")) {
+            System.out.println("正在分享到微博页面。。。");
         } else if (option.equals("QQ")) {
-            System.out.println("跳转到QQ页面。。。");
-        } else if (option.equals("微信")) {
-            System.out.println("跳转到微信。。。");
-        } else if (option.equals("朋友圈")) {
-            System.out.println("跳转到朋友圈");
+            System.out.println("正在分享到QQ页面。。。");
+        } else if (option.equals("WeChat")) {
+            System.out.println("正在分享到微信。。。");
+        } else if (option.equals("Friends")) {
+            System.out.println("正在分享到朋友圈");
         }
         //.....more options....
     }
-
 
     /**
      * 通过策略模式重构的代码(一行代码NB :) )
      */
     public static void shareServiceDemo2(String option) {
-        ShareUtil.shareOptions(option);
+        ShareSelector.select(option);
     }
 
 
     public static void main(String[] args) {
-        //////////////1.方法一，通过重复if else的嵌套方法来实现分享//////////////
         String option = "QQ";
+
+        //////////////1.方法一，通过重复if else的嵌套方法来实现分享//////////////
         shareServiceDemo1(option);
+
         //////////////2.方法二，通过策略模式来实现分享/////////////////////////
         shareServiceDemo2(option);
     }

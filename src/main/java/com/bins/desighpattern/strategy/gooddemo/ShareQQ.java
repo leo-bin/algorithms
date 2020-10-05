@@ -8,7 +8,7 @@ package com.bins.desighpattern.strategy.gooddemo;
 public class ShareQQ implements ShareStrategy {
 
     @Override
-    public void share(String option) {
-        System.out.println("分享至QQ。。。");
+    public void share() {
+        System.out.println("正在分享至QQ。。。");
     }
 }
