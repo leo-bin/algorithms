@@ -1,4 +1,4 @@
-package com.bins.question.array;
+package com.bins.algorithm.shuffle;
 
 import java.util.Arrays;
 import java.util.Random;

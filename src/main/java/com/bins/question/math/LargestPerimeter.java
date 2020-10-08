@@ -57,6 +57,7 @@ public class LargestPerimeter {
      * 17.空间复杂度：O(1)
      */
     public static int largestPerimeter(int[] A) {
+        //先排序
         Arrays.sort(A);
         for (int i = A.length - 1; i >= 2; i--) {
             int c = A[i - 2];
