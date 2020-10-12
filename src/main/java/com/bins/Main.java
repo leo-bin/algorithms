@@ -2,6 +2,7 @@ package com.bins;
 
 
 import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
@@ -12,6 +13,7 @@ public class Main {
         System.arraycopy(nums, srcPos + 1, nums, desPos, 2);
         nums[nums.length - 1] = -1;
         System.out.println(Arrays.toString(nums));
+        ReentrantLock lock=new ReentrantLock();
     }
 
 
