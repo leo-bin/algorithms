@@ -5,10 +5,11 @@ import java.util.Arrays;
 /**
  * @author leo-bin
  * @date 2020/4/12 22:15
- * @apiNote 排序数组的平方
+ * @apiNote 有序数组的平方
+ * 来源：leetcode-977
+ * 链接：https://leetcode-cn.com/problems/squares-of-a-sorted-array/
  */
 public class SortedArraySquares {
-
 
     /**
      * 题目描述：
@@ -37,21 +38,17 @@ public class SortedArraySquares {
      * 6.时间复杂度：O(n)
      * 7.空间复杂度：O(n)
      */
-    public static int[] sortedSquares(int[] nums) {
-        int len = nums.length;
-        int[] result = new int[len];
-        int left = 0;
-        int right = len - 1;
-        int current = len - 1;
-        while (left <= right) {
-            int leftValue = nums[left] < 0 ? -nums[left] : nums[left];
-            int rightValue = nums[right] < 0 ? -nums[right] : nums[right];
-            if (leftValue <= rightValue) {
-                result[current--] = rightValue * rightValue;
-                right--;
-            } else {
-                result[current--] = leftValue * leftValue;
+    public static int[] sortedSquares(int[] A) {
+        int[] result = new int[A.length];
+        for (int left = 0, right = A.length - 1, index = A.length - 1; left <= right; ) {
+            int leftValue = A[left] < 0 ? -A[left] : A[left];
+            int rightValue = A[right] < 0 ? -A[right] : A[right];
+            if (leftValue > rightValue) {
+                result[index--] = leftValue * leftValue;
                 left++;
+            } else {
+                result[index--] = rightValue * rightValue;
+                right--;
             }
         }
         return result;
