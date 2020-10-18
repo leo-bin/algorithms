@@ -85,10 +85,11 @@ public class RemoveNthFromEnd {
     public static ListNode removeNthFromEndV2(ListNode head, int n) {
         ListNode dump = new ListNode(0);
         dump.next = head;
-        ListNode p1 = head, p2 = dump, pre = dump;
-        int count = 1;
+        ListNode p1 = head;
+        ListNode p2 = dump, pre = dump;
+        int count = 0;
         while (p1 != null) {
-            if (count > (n - 1)) {
+            if (count >= (n - 1)) {
                 pre = p2;
                 p2 = p2.next;
             }
