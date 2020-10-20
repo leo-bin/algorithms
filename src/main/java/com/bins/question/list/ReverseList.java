@@ -6,6 +6,8 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/3/17 22:01
  * @apiNote 反转链表
+ * 来源：leetcode-206
+ * 链接：https://leetcode-cn.com/problems/reverse-linked-list/
  */
 public class ReverseList {
 
@@ -20,7 +22,6 @@ public class ReverseList {
             this.data = data;
         }
     }
-
 
     /**
      * 反转链表

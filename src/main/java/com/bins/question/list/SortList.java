@@ -49,7 +49,11 @@ public class SortList {
      * 12.空间复杂度：O(log(n))
      */
     public static ListNode sortList(ListNode head) {
-        return head == null ? null : mergeSort(head);
+        //特判
+        if (head == null) {
+            return head;
+        }
+        return mergeSort(head);
     }
 
 
@@ -75,12 +79,12 @@ public class SortList {
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode tmp = slow.next;
+        ListNode mid = slow.next;
         //从中间开始切断关系
         slow.next = null;
         //继续分治
         ListNode left = mergeSort(head);
-        ListNode right = mergeSort(tmp);
+        ListNode right = mergeSort(mid);
         //开始合并两个链表
         return merge(left, right);
     }
@@ -89,8 +93,8 @@ public class SortList {
      * 合并两个链表
      */
     public static ListNode merge(ListNode left, ListNode right) {
-        ListNode result = new ListNode(0);
-        ListNode current = result;
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
         while (left != null && right != null) {
             if (left.data < right.data) {
                 current.next = left;
@@ -102,7 +106,7 @@ public class SortList {
             current = current.next;
         }
         current.next = left != null ? left : right;
-        return result.next;
+        return dummy.next;
     }
 
 
