@@ -1,4 +1,4 @@
-package com.bins.question.math;
+package com.bins.question.array;
 
 import java.util.Arrays;
 
@@ -6,9 +6,10 @@ import java.util.Arrays;
  * @author leo-bin
  * @date 2020/4/16 12:36
  * @apiNote 构建乘积数组
+ * 来源：剑指offer
+ * 链接：https://www.nowcoder.com/practice/94a4d381a68b47b7a8bed86f2975db46?tpId=13&&tqId=11204&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  */
-public class Multiply {
-
+public class ConstructMultiplyArr {
 
     /**
      * 题目描述：
@@ -41,6 +42,7 @@ public class Multiply {
         return B;
     }
 
+
     /**
      * 题目描述：
      * 1.解法二
@@ -70,6 +72,18 @@ public class Multiply {
             }
         }
         return B;
+    }
+
+    /**
+     * 解法三
+     *
+     * @apiNote 思路：
+     * 1.
+     */
+    public static int[] constructArr(int[] a) {
+
+
+        return a;
     }
 
     public static void main(String[] args) {
