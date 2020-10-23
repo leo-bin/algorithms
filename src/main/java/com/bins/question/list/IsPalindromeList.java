@@ -68,8 +68,8 @@ public class IsPalindromeList {
      * 6.要想实现反转需要找到中间节点，这里可以使用快慢指针的方式求
      * 7.反转链表我们可以用递归来实现
      * 8.之后我们从中间节点和head节点开始遍历，从前往后走，判断是否一样
-     * 9.总体的时间复杂度：O(1/2*n)
-     * 10.空间复杂度：O(n)
+     * 9.总体的时间复杂度：O(n)(实际上是1/2n)
+     * 10.空间复杂度：O(n)(实际上是1/2n)
      */
     public static boolean isPalindromeV2(ListNode head) {
         //特判
@@ -79,18 +79,18 @@ public class IsPalindromeList {
         //快慢指针找中间节点（结束之后的slow指向的就是中间节点）
         ListNode fast = head, slow = head;
         while (fast.next != null && fast.next.next != null) {
-            fast = fast.next.next;
             slow = slow.next;
+            fast = fast.next.next;
         }
         //反转后半部分
-        slow = reverse(slow.next);
+        ListNode second = reverse(slow.next);
         //校验后半部分和前半部分是否一致
-        while (slow != null) {
-            if (slow.data != head.data) {
+        while (second != null) {
+            if (second.data != head.data) {
                 return false;
             }
             head = head.next;
-            slow = slow.next;
+            second = second.next;
         }
         return true;
     }
