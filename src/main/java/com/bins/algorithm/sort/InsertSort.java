@@ -1,5 +1,7 @@
 package com.bins.algorithm.sort;
 
+import java.util.Arrays;
+
 /**
  * @author leo-bin
  * @date 2020/4/26 17:19
@@ -18,9 +20,9 @@ public class InsertSort {
      * 第二次插入：{2，3}和4进行比较，变成{2，3，4}
      * 第三次插入：{2，3，4}和5比较。。。
      * 4.时间复杂度：O(n*n)
-     * 5.稳定排序
+     * 5.空间复杂度：O(1)
      */
-    public static int[] insertSort(int[] nums) {
+    public static void insertSort(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (nums[j] < nums[j - 1]) {
@@ -30,11 +32,16 @@ public class InsertSort {
                 }
             }
         }
-        return nums;
     }
 
 
+    /**
+     * 测试
+     */
     public static void main(String[] args) {
-
+        int[] nums = {2, 1, 5, 3, 6, 4};
+        System.out.println("排序之前的数组是：" + Arrays.toString(nums));
+        insertSort(nums);
+        System.out.println("排序之后的数组是：" + Arrays.toString(nums));
     }
 }

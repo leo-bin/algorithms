@@ -46,7 +46,7 @@ public class BubbleSort {
                     int temp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
-                    //有元素交换了，就说明当前数组还是无序的
+                    //有元素交换了，说明当前数组还是无序
                     isSorted = false;
                 }
             }
@@ -58,8 +58,9 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 2, 5, 4, 1};
-        int[] nums1 = {3, 2, 5, 4, 1};
+        int[] nums = {3, 2, 5, 4, 6, 1};
+        int[] nums1 = {3, 2, 5, 4, 6, 1};
+        System.out.println("原数组是：" + Arrays.toString(nums));
         bubbleSort(nums);
         bubbleSort2(nums1);
         System.out.println("冒泡排序之后的数组为：" + Arrays.toString(nums));
