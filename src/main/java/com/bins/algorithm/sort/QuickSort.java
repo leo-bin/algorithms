@@ -80,8 +80,8 @@ public class QuickSort {
 
 
     public static void main(String[] args) {
-        int[] nums = {3, 2, 5, 4, 1, 6, 5};
+        int[] nums = {5, 1, 3, 2, 6, 4, 7};
         quickSort(nums, 0, nums.length - 1);
-        System.out.println("快速排序之后的数组为：" + Arrays.toString(nums));
+        System.out.println(Arrays.toString(nums));
     }
 }

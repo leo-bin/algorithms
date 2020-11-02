@@ -29,7 +29,6 @@ public class MergeSort {
     }
 
 
-
     /**
      * 归并两个数组，重新排序为一个新数组
      */
@@ -52,6 +51,8 @@ public class MergeSort {
 
 
     public static void main(String[] args) {
-
+        int[] nums = {5, 1, 3, 2, 6, 4, 7};
+        int[] result = mergeSort(nums);
+        System.out.println(Arrays.toString(result));
     }
 }
